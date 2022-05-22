@@ -282,10 +282,19 @@ function display() {
   const leftChar        = characterDataToSort[leftCharIndex];
   const rightChar       = characterDataToSort[rightCharIndex];
 
-  const charNameDisp = name => {
+  const charNameDisp = (name, characters) => {
     const charName = reduceTextWidth(name, 'Arial 12.8px', 220);
+    console.log(typeof characters);
+    const artistNames = characters.toString().replaceAll(',',', ');
+    const names = artistNames.split(" ");
+
+    for (let i = 0; i < names.length; i++) {
+        names[i] = names[i][0].toUpperCase() + names[i].substr(1);
+    }
+    const finalArtistNames = names.join(" ");
+
     const charTooltip = name !== charName ? name : '';
-    return `<p title="${charTooltip}">${charName}</p>`;
+    return `<p title="${charTooltip}">${charName}<br><sub>${finalArtistNames}</sub></p>`;
   };
 
   progressBar(`Battle No. ${battleNo}`, percent);
@@ -295,8 +304,8 @@ function display() {
 
 
 
-  document.querySelector('.left.sort.text').innerHTML = charNameDisp(leftChar.name);
-  document.querySelector('.right.sort.text').innerHTML = charNameDisp(rightChar.name);
+  document.querySelector('.left.sort.text').innerHTML = charNameDisp(leftChar.name, leftChar.opts.character);
+  document.querySelector('.right.sort.text').innerHTML = charNameDisp(rightChar.name, rightChar.opts.character);
 
   /** Autopick if choice has been given. */
   if (choices.length !== battleNo - 1) {

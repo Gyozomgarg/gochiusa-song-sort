@@ -327,6 +327,10 @@ strong {
     font-weight: bold;
 }
 
+sub {
+  font-size: 0.66em;
+}
+
 .home-img {
   max-width: -webkit-fill-available;
   border-radius: 150px;
