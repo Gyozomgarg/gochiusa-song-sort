@@ -518,6 +518,7 @@ function result(imageNum = 3) {
 
   document.querySelectorAll('.sorting.button').forEach(el => el.style.display = 'none');
   document.querySelectorAll('.sort.text').forEach(el => el.style.display = 'none');
+  document.querySelectorAll('.mobile.sort.image').forEach(el => el.style.display = 'none');
   document.querySelector('.options').style.display = 'none';
   document.querySelector('.info').style.display = 'none';
 

@@ -189,7 +189,6 @@ label:hover {
 
 .image.selector {
   margin-top: 0.5em;
-  width: 500px;
   display: none;
   text-align: center;
   font-size: 0.75em;
@@ -197,7 +196,6 @@ label:hover {
 
 .time.taken {
   margin-top: 0.5em;
-  width: 500px;
   display: none;
   text-align: center;
   font-size: 0.75em;
@@ -207,7 +205,7 @@ label:hover {
   font-size: 1em;
   display: flex;
   align-content: flex-start;
-  width: 80%;
+  width: auto;
   margin: 2em auto;
 }
 
@@ -237,6 +235,7 @@ label:hover {
 
 .result.image {
   height: 175px;
+  overflow-x: clip;
 }
 
 .result.image img {
@@ -496,7 +495,8 @@ sub {
   }
 
   .progresstext {
-    width: 100% !important;
+    width: 50px;
+    position: inherit;
   }
 
   .options {
@@ -507,4 +507,4 @@ sub {
       grid-gap: 10px;
       width: 85%;
   }
-}
+} /** End Mobile Media **/
