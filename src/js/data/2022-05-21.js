@@ -40,6 +40,21 @@ dataSet[dataSetVersion].options = [
       { name: "Mistral", key: "mistral" },
       { name: "Diva", key: "diva" }
     ]
+  },
+  {
+    name: "Remove Solo Verisons",
+    key: "solo-ver",
+    tooltip: "Check this to remove solo versions of group songs."
+  },
+  {
+    name: "Remove Covers",
+    key: "cover-ver",
+    tooltip: "Check this to remove cover versions of group songs."
+  },
+  {
+    name: "Remove Rearranges",
+    key: "rearrange-ver",
+    tooltip: "Check this to remove rearrange versions of group songs."
   }
 ];
 
