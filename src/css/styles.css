@@ -148,11 +148,11 @@ body {
   text-align: left;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 10px;
-  width: 450px;
+  width: 50%;
 }
 
 .options > div {
-  font-size: 0.5625em;
+  font-size: 1em;
 }
 
 label {
@@ -186,7 +186,7 @@ label:hover {
 }
 
 .results {
-  font-size: 0.75em;
+  font-size: 1em;
   display: flex;
   align-content: flex-start;
   width: 80%;
