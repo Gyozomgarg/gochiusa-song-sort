@@ -62,11 +62,11 @@ function init() {
 
   document.querySelector('.left.sort.image').addEventListener('click', () => pick('left'));
   document.querySelector('.right.sort.image').addEventListener('click', () => pick('right'));
-  
+
   document.querySelector('.sorting.tie.button').addEventListener('click', () => pick('tie'));
   document.querySelector('.sorting.undo.button').addEventListener('click', undo);
   document.querySelector('.sorting.save.button').addEventListener('click', () => saveProgress('Progress'));
-  
+
   document.querySelector('.finished.save.button').addEventListener('click', () => saveProgress('Last Result'));
   document.querySelector('.finished.getimg.button').addEventListener('click', generateImage);
   document.querySelector('.finished.list.button').addEventListener('click', generateTextList);
@@ -209,7 +209,7 @@ function start() {
     .map(a => a[1]);
 
   /**
-   * tiedDataList will keep a record of indexes on which characters are equal (i.e. tied) 
+   * tiedDataList will keep a record of indexes on which characters are equal (i.e. tied)
    * to another one. recordDataList will have an interim list of sorted elements during
    * the mergesort process.
    */
@@ -217,14 +217,14 @@ function start() {
   recordDataList  = characterDataToSort.map(() => 0);
   tiedDataList    = characterDataToSort.map(() => -1);
 
-  /** 
+  /**
    * Put a list of indexes that we'll be sorting into sortedIndexList. These will refer back
    * to characterDataToSort.
-   * 
+   *
    * Begin splitting each element into little arrays and spread them out over sortedIndexList
-   * increasing its length until it become arrays of length 1 and you can't split it anymore. 
-   * 
-   * parentIndexList indicates each element's parent (i.e. where it was split from), except 
+   * increasing its length until it become arrays of length 1 and you can't split it anymore.
+   *
+   * parentIndexList indicates each element's parent (i.e. where it was split from), except
    * for the first element, which has no parent.
    */
 
@@ -292,7 +292,7 @@ function display() {
   document.querySelector('.left.sort.image').src = leftChar.img;
   document.querySelector('.right.sort.image').src = rightChar.img;
 
-  
+
 
   document.querySelector('.left.sort.text').innerHTML = charNameDisp(leftChar.name);
   document.querySelector('.right.sort.text').innerHTML = charNameDisp(rightChar.name);
@@ -310,7 +310,7 @@ function display() {
 
 /**
  * Sort between two character choices or tie.
- * 
+ *
  * @param {'left'|'right'|'tie'} sortType
  */
 function pick(sortType) {
@@ -330,12 +330,12 @@ function pick(sortType) {
   sortedNoPrev        = sortedNo;
   pointerPrev         = pointer;
 
-  /** 
+  /**
    * For picking 'left' or 'right':
-   * 
+   *
    * Input the selected character's index into recordDataList. Increment the pointer of
    * recordDataList. Then, check if there are any ties with this character, and keep
-   * incrementing until we find no more ties. 
+   * incrementing until we find no more ties.
    */
   switch (sortType) {
     case 'left': {
@@ -355,9 +355,9 @@ function pick(sortType) {
       break;
     }
 
-  /** 
+  /**
    * For picking 'tie' (i.e. heretics):
-   * 
+   *
    * Proceed as if we picked the 'left' character. Then, we record the right character's
    * index value into the list of ties (at the left character's index) and then proceed
    * as if we picked the 'right' character.
@@ -379,7 +379,7 @@ function pick(sortType) {
   }
 
   /**
-   * Once we reach the limit of the 'right' character list, we 
+   * Once we reach the limit of the 'right' character list, we
    * insert all of the 'left' characters into the record, or vice versa.
    */
   const leftListLen = sortedIndexList[leftIndex].length;
@@ -396,9 +396,9 @@ function pick(sortType) {
   }
 
   /**
-   * Once we reach the end of both 'left' and 'right' character lists, we can remove 
+   * Once we reach the end of both 'left' and 'right' character lists, we can remove
    * the arrays from the initial mergesort array, since they are now recorded. This
-   * record is a sorted version of both lists, so we can replace their original 
+   * record is a sorted version of both lists, so we can replace their original
    * (unsorted) parent with a sorted version. Purge the record afterwards.
    */
   if (leftInnerIndex === leftListLen && rightInnerIndex === rightListLen) {
@@ -435,7 +435,7 @@ function pick(sortType) {
 
 /**
  * Records data in recordDataList.
- * 
+ *
  * @param {'left'|'right'} sortType Record from the left or the right character array.
  */
 function recordData(sortType) {
@@ -446,14 +446,14 @@ function recordData(sortType) {
     recordDataList[pointer] = sortedIndexList[rightIndex][rightInnerIndex];
     rightInnerIndex++;
   }
-  
+
   pointer++;
   sortedNo++;
 }
 
 /**
  * Modifies the progress bar.
- * 
+ *
  * @param {string} indicator
  * @param {number} percentage
  */
@@ -465,14 +465,14 @@ function progressBar(indicator, percentage) {
 
 /**
  * Shows the result of the sorter.
- * 
+ *
  * @param {number} [imageNum=3] Number of images to display. Defaults to 3.
  */
 function result(imageNum = 3) {
   document.querySelectorAll('.finished.button').forEach(el => el.style.display = 'block');
   document.querySelector('.image.selector').style.display = 'block';
   document.querySelector('.time.taken').style.display = 'block';
-  
+
   document.querySelectorAll('.sorting.button').forEach(el => el.style.display = 'none');
   document.querySelectorAll('.sort.text').forEach(el => el.style.display = 'none');
   document.querySelector('.options').style.display = 'none';
@@ -545,9 +545,9 @@ function undo() {
   display();
 }
 
-/** 
+/**
  * Save progress to local browser storage.
- * 
+ *
  * @param {'Autosave'|'Progress'|'Last Result'} saveType
 */
 function saveProgress(saveType) {
@@ -574,7 +574,7 @@ function loadProgress() {
   if (saveData) decodeQuery(saveData);
 }
 
-/** 
+/**
  * Clear progress from local browser storage.
 */
 function clearProgress() {
@@ -689,8 +689,8 @@ function decodeQuery(queryString = window.location.search.slice(1)) {
   let successfulLoad;
 
   try {
-    /** 
-     * Retrieve data from compressed string. 
+    /**
+     * Retrieve data from compressed string.
      * @type {string[]}
      */
     const decoded = LZString.decompressFromEncodedURIComponent(queryString).split('|');
@@ -706,7 +706,7 @@ function decodeQuery(queryString = window.location.search.slice(1)) {
     const optDecoded    = decoded.splice(0, 1)[0];
     const suboptDecoded = decoded.slice(0);
 
-    /** 
+    /**
      * Get latest data set version from before the timestamp.
      * If timestamp is before or after any of the datasets, get the closest one.
      * If timestamp is between any of the datasets, get the one in the past, but if timeError is set, get the one in the future.
@@ -721,7 +721,7 @@ function decodeQuery(queryString = window.location.search.slice(1)) {
         return currDate.val < seedDate.val ? currIndex : prevIndex;
       }, -1);
     const afterDateIndex = dateMap.findIndex(date => date.val > seedDate.val);
-    
+
     if (beforeDateIndex === -1) {
       currentVersion = dateMap[afterDateIndex].str;
     } else if (afterDateIndex === -1) {
@@ -759,7 +759,7 @@ function decodeQuery(queryString = window.location.search.slice(1)) {
   if (successfulLoad) { start(); }
 }
 
-/** 
+/**
  * Preloads images in the filtered character data and converts to base64 representation.
 */
 function preloadImages() {
@@ -767,7 +767,11 @@ function preloadImages() {
   let imagesLoaded = 0;
 
   const loadImage = async (src) => {
-    const blob = await fetch(src).then(res => res.blob());
+    console.log(src);
+    //const blob = await fetch(src).then(res => res.blob());
+    const blob = src;
+    res => res.blob();
+
     return new Promise((res, rej) => {
       const reader = new FileReader();
       reader.onload = ev => {
@@ -775,7 +779,7 @@ function preloadImages() {
         res(ev.target.result);
       };
       reader.onerror = rej;
-      reader.readAsDataURL(blob);
+      return;
     });
   };
 
@@ -786,7 +790,7 @@ function preloadImages() {
 
 /**
  * Returns a readable time string from milliseconds.
- * 
+ *
  * @param {number} milliseconds
  */
 function msToReadableTime (milliseconds) {

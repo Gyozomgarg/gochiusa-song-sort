@@ -39,11 +39,10 @@ body {
 }
 
 .sorter {
-  margin: 0px auto;
-  display: grid;
-  grid-template-columns: 120px 1fr 120px;
-  grid-gap: 5px;
-  width: 420px;
+    margin: 0px auto;
+    display: grid;
+    grid-template-columns: 240px 1fr 240px;
+    grid-gap: 5px;
 }
 
 .button {
@@ -79,7 +78,7 @@ body {
   margin: 50px auto;
   background-color: #333;
 
-  border-radius: 100%;  
+  border-radius: 100%;
   -webkit-animation: sk-scaleout 1.0s infinite ease-in-out;
   animation: sk-scaleout 1.0s infinite ease-in-out;
 }
@@ -100,7 +99,7 @@ body {
 }
 
 @keyframes sk-scaleout {
-  0% { 
+  0% {
     -webkit-transform: scale(0);
     transform: scale(0);
   } 100% {
@@ -111,8 +110,7 @@ body {
 }
 
 .sorter > .image {
-  width: 120px;
-  height: 180px;
+  width: 240px;
   margin: auto;
   grid-row: 1 / 7;
   cursor: pointer;
