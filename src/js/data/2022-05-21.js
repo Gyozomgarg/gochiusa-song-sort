@@ -46,7 +46,7 @@ dataSet[dataSetVersion].options = [
 dataSet[dataSetVersion].characterData = [
   {
     "name": "「ラビットハウスへ行こうよ♪」のうた",
-    "img": "",
+    "img": "https://www.youtube.com/embed/3FMNsZj5G3w",
     "opts": {
       "character": [
         "cocoa"
@@ -116,7 +116,7 @@ dataSet[dataSetVersion].characterData = [
   },
   {
     "name": "予感のぴんぽん聞こえたら",
-    "img": "",
+    "img": "https://www.youtube.com/embed/cStP-pJ-DmM",
     "opts": {
       "character": [
         "cocoa",
@@ -205,7 +205,7 @@ dataSet[dataSetVersion].characterData = [
   },
   {
     "name": "木もれび青春譜",
-    "img": "",
+    "img": "https://www.youtube.com/embed/L9FfnSXGGd8",
     "opts": {
       "character": [
         "chino",
@@ -401,7 +401,7 @@ dataSet[dataSetVersion].characterData = [
   },
   {
     "name": "振り向けば月、いいえ団子。",
-    "img": "",
+    "img": "https://www.youtube.com/embed/ZZo0-FZJFhs",
     "opts": {
       "character": [
         "chiya"
@@ -482,7 +482,7 @@ dataSet[dataSetVersion].characterData = [
   },
   {
     "name": "銀のスプーン",
-    "img": "",
+    "img": "https://www.youtube.com/embed/jmlqWTkBj7w",
     "opts": {
       "character": [
         "saki"
@@ -492,7 +492,7 @@ dataSet[dataSetVersion].characterData = [
   },
   {
     "name": "魅惑のダイヤモンドティーカップ事件",
-    "img": "",
+    "img": "https://www.youtube.com/embed/Ukf5eGtdY9c",
     "opts": {
       "character": [
         "cocoa",
@@ -513,7 +513,7 @@ dataSet[dataSetVersion].characterData = [
   },
   {
     "name": "薔薇色チュチュとピルエット",
-    "img": "",
+    "img": "https://www.youtube.com/embed/Qv4yzs8dBBs",
     "opts": {
       "character": [
         "rize"
@@ -543,7 +543,7 @@ dataSet[dataSetVersion].characterData = [
   },
   {
     "name": "魔女と使い魔のふしぎな館",
-    "img": "",
+    "img": "https://www.youtube.com/embed/oRmmUY1UAmQ",
     "opts": {
       "character": [
         "chiya",
@@ -684,7 +684,7 @@ dataSet[dataSetVersion].characterData = [
   },
   {
     "name": "Foooo are you?",
-    "img": "",
+    "img": "https://www.youtube.com/embed/lNJRcPjJqJo",
     "opts": {
       "character": [
         "yura"
@@ -734,7 +734,7 @@ dataSet[dataSetVersion].characterData = [
   },
   {
     "name": "Hi Hi High☆",
-    "img": "",
+    "img": "https://www.youtube.com/embed/0rQBgEfFfrU",
     "opts": {
       "character": [
         "syaro"
@@ -844,7 +844,7 @@ dataSet[dataSetVersion].characterData = [
   },
   {
     "name": "WELCOME【う・さ!】",
-    "img": "",
+    "img": "https://www.youtube.com/embed/h3lLuGDXSVc",
     "opts": {
       "character": [
         "cocoa",
@@ -1098,7 +1098,7 @@ dataSet[dataSetVersion].characterData = [
   },
   {
     "name": "きらめきのみぞ知る行方",
-    "img": "",
+    "img": "https://www.youtube.com/embed/IA1o0keBjdI",
     "opts": {
       "character": [
         "aoyama",
@@ -1196,7 +1196,7 @@ dataSet[dataSetVersion].characterData = [
   },
   {
     "name": "スキでスゴイになりたいな",
-    "img": "",
+    "img": "https://www.youtube.com/embed/M38DaoghwHI",
     "opts": {
       "character": [
         "chino",
@@ -1566,7 +1566,7 @@ dataSet[dataSetVersion].characterData = [
   },
   {
     "name": "ハピハピ♪バースデイソング",
-    "img": "",
+    "img": "https://www.youtube.com/embed/_qof9eZ6e94",
     "opts": {
       "character": [
         "cocoa",
@@ -1851,7 +1851,7 @@ dataSet[dataSetVersion].characterData = [
   },
   {
     "name": "わーいわーいトライ！",
-    "img": "",
+    "img": "https://www.youtube.com/embed/gLc8lAQVta8",
     "opts": {
       "character": [
         "cocoa",
