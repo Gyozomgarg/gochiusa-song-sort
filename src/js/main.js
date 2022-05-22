@@ -60,8 +60,8 @@ function init() {
   document.querySelector('.starting.start.button').addEventListener('click', start);
   document.querySelector('.starting.load.button').addEventListener('click', loadProgress);
 
-  document.querySelector('.left.sort.image').addEventListener('click', () => pick('left'));
-  document.querySelector('.right.sort.image').addEventListener('click', () => pick('right'));
+  document.querySelector('.left.sort.text').addEventListener('click', () => pick('left'));
+  document.querySelector('.right.sort.text').addEventListener('click', () => pick('right'));
 
   document.querySelector('.sorting.tie.button').addEventListener('click', () => pick('tie'));
   document.querySelector('.sorting.undo.button').addEventListener('click', undo);
@@ -483,7 +483,8 @@ function result(imageNum = 3) {
   const imgRes = (char, num) => {
     const charName = reduceTextWidth(char.name, 'Arial 12px', 160);
     const charTooltip = char.name !== charName ? char.name : '';
-    return `<div class="result image"><div class="left"><span>${num}</span></div><div class="right"><img src="${char.img}"><div><span title="${charTooltip}">${charName}</span></div></div></div>`;
+    //return `<div class="result image"><div class="left"><span>${num}</span></div><div class="right"><img src="${char.img}"><div><span title="${charTooltip}">${charName}</span></div></div></div>`;
+    return `<div class="result image"><div class="left"><span>${num}</span></div><div class="right"><iframe class="right sort image" height="160" src="${char.img}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><div><span title="${charTooltip}">${charName}</span></div></div></div>`;
   }
   const res = (char, num) => {
     const charName = reduceTextWidth(char.name, 'Arial 12px', 160);
@@ -763,28 +764,30 @@ function decodeQuery(queryString = window.location.search.slice(1)) {
  * Preloads images in the filtered character data and converts to base64 representation.
 */
 function preloadImages() {
-  const totalLength = characterDataToSort.length;
-  let imagesLoaded = 0;
-
-  const loadImage = async (src) => {
-    console.log(src);
-    //const blob = await fetch(src).then(res => res.blob());
-    const blob = src;
-    res => res.blob();
-
-    return new Promise((res, rej) => {
-      const reader = new FileReader();
-      reader.onload = ev => {
-        progressBar(`Loading Image ${++imagesLoaded}`, Math.floor(imagesLoaded * 100 / totalLength));
-        res(ev.target.result);
-      };
-      reader.onerror = rej;
-      return;
-    });
-  };
+  // const totalLength = characterDataToSort.length;
+  // let imagesLoaded = 0;
+  //
+  // const loadImage = async (src) => {
+  //   console.log(src);
+  //   //const blob = await fetch(src).then(res => res.blob());
+  //   const blob = src;
+  //   res => res.blob();
+  //
+  //   return new Promise((res, rej) => {
+  //     const reader = new FileReader();
+  //     reader.onload = ev => {
+  //       progressBar(`Loading Image ${++imagesLoaded}`, Math.floor(imagesLoaded * 100 / totalLength));
+  //       res(ev.target.result);
+  //     };
+  //     reader.onerror = rej;
+  //     return src;
+  //   });
+  // };
 
   return Promise.all(characterDataToSort.map(async (char, idx) => {
-    characterDataToSort[idx].img = await loadImage(imageRoot + char.img);
+    // characterDataToSort[idx].img = await loadImage(imageRoot + char.img);
+    characterDataToSort[idx].img = imageRoot + char.img;
+
   }));
 }
 
