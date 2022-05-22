@@ -442,3 +442,69 @@ sub {
   background-color: #DCEBA6;
   transition: background 0.25s linear;
 }
+
+/**
+  Mobile Styling
+**/
+@media only screen and (min-width: 768px) {
+  .sorter.mobile {
+      display: none;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .sorter.mobile {
+    margin: 0px auto;
+    place-content: space-between;
+    width: 80%;
+    display: block;
+  }
+  .sorter.desktop {
+    display: none;
+  }
+
+  img.mobile.home-img {
+    height: 250px;
+  }
+
+  .mobile.sort.text > p {
+    top: 0;
+    transform: none;
+  }
+
+  .mobile.sort.image {
+    /** Should become visible after starting **/
+    display: none;
+  }
+
+  .mobile.image {
+    margin-top: 10px;
+  }
+
+  .mobile.button {
+    padding: 15px;
+  }
+
+  .progress {
+    width: 100%;
+    text-align: center;
+  }
+
+  .progressbar {
+    width: 96%;
+    padding: 0%;
+    margin: 2%;
+  }
+
+  .progresstext {
+    width: 100% !important;
+  }
+
+  .options {
+      margin: 1em;
+      display: grid;
+      text-align: left;
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 10px;
+      width: 85%;
+  }
+}

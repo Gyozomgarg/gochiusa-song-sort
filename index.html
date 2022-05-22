@@ -9,6 +9,7 @@
   <meta name="og:image" content="src/assets/gochiusa-headphones-thumbnail.jpg">
   <meta name="theme-color" content="#f8b5be">
   <meta property="og:type" content="website" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
   <title>Gochiusa Music Sorter</title>
 
   <link rel="stylesheet" type="text/css" href="src/css/reset.css">
@@ -33,7 +34,7 @@
         </div>
     </div>
 
-    <div class="sorter">
+    <div class="sorter desktop">
         <!-- <img src="src/assets/homeLeft.png" class="left sort image"> -->
         <iframe class="left sort image" width="240" src="https://www.youtube.com/embed/_-oEpcmI9Bo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         <div class="starting start button"><img class="home-img" style="max-width: -webkit-fill-available;" src="src/assets/gochiusa-headphones.jpg"><h3>Gochiusa Music Sorter</h3><h2>Click Here to Start!</h2></div>
@@ -55,6 +56,28 @@
         <div class="left sort text"><p></p></div>
         <div class="right sort text"><p></p></div>
     </div>
+
+    <div class="sorter mobile">
+      <div class="mobile starting start button"><img class="mobile home-img" style="max-width: -webkit-fill-available;" src="src/assets/gochiusa-headphones.jpg"><h3>Gochiusa Music Sorter</h3><h2>Click Here to Start!</h2></div>
+      <div class="mobile starting load button">Load <span></span></div>
+      <div class="mobile loading button"><div></div><span>Loading...</span></div>
+
+      <iframe class="mobile left sort image" width="240" src="https://www.youtube.com/embed/_-oEpcmI9Bo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <div class="mobile left sort text"><p></p></div>
+
+      <iframe class="mobile right sort image" width="240" src="https://www.youtube.com/embed/vRMGxzuS0_w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <div class="mobile right sort text"><p></p></div>
+
+      <div class="mobile sorting tie button">Tie</div>
+      <div class="mobile sorting undo button">Undo</div>
+      <div class="mobile sorting save button">Save Progress</div>
+
+      <div class="mobile finished save button">Generate Result URL</div>
+      <div class="mobile finished getimg button">Generate Image</div>
+      <div class="mobile finished list button">Generate Text List</div>
+
+    </div>
+
 
     <div class="options"></div>
     <div class="image selector">Display Embeds on Result: </div>

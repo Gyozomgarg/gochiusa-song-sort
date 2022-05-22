@@ -57,21 +57,43 @@ let storedSaveType  = localStorage.getItem(`${sorterURL}_saveType`);
 function init() {
 
   /** Define button behavior. */
-  document.querySelector('.starting.start.button').addEventListener('click', start);
-  document.querySelector('.starting.load.button').addEventListener('click', loadProgress);
+  document.querySelectorAll('.starting.start.button').forEach(item => {
+    item.addEventListener('click', start);
+  });
+  document.querySelectorAll('.starting.load.button').forEach(item => {
+    item.addEventListener('click', loadProgress);
+  });
 
-  document.querySelector('.left.sort.text').addEventListener('click', () => pick('left'));
-  document.querySelector('.right.sort.text').addEventListener('click', () => pick('right'));
+  document.querySelectorAll('.left.sort.text').forEach(item => {
+    item.addEventListener('click', () => pick('left'));
+  });
+  document.querySelectorAll('.right.sort.text').forEach(item => {
+    item.addEventListener('click', () => pick('right'));
+  });
 
-  document.querySelector('.sorting.tie.button').addEventListener('click', () => pick('tie'));
-  document.querySelector('.sorting.undo.button').addEventListener('click', undo);
-  document.querySelector('.sorting.save.button').addEventListener('click', () => saveProgress('Progress'));
+  document.querySelectorAll('.sorting.tie.button').forEach(item => {
+    item.addEventListener('click', () => pick('tie'));
+  });
+  document.querySelectorAll('.sorting.undo.button').forEach(item => {
+    item.addEventListener('click', undo);
+  });
+  document.querySelectorAll('.sorting.save.button').forEach(item => {
+    item.addEventListener('click', () => saveProgress('Progress'));
+  });
 
-  document.querySelector('.finished.save.button').addEventListener('click', () => saveProgress('Last Result'));
-  document.querySelector('.finished.getimg.button').addEventListener('click', generateImage);
-  document.querySelector('.finished.list.button').addEventListener('click', generateTextList);
+  document.querySelectorAll('.finished.save.button').forEach(item => {
+    item.addEventListener('click', () => saveProgress('Last Result'));
+  });
+  document.querySelectorAll('.finished.getimg.button').forEach(item => {
+    item.addEventListener('click', generateImage);
+  });
+  document.querySelectorAll('.finished.list.button').forEach(item => {
+    item.addEventListener('click', generateTextList);
+  });
 
-  document.querySelector('.clearsave').addEventListener('click', clearProgress);
+  document.querySelectorAll('.clearsave').forEach(item => {
+    item.addEventListener('click', clearProgress);
+  });
 
   /** Define keyboard controls (up/down/left/right vimlike k/j/h/l). */
   document.addEventListener('keypress', (ev) => {
@@ -263,6 +285,10 @@ function start() {
   document.querySelectorAll('.starting.button').forEach(el => el.style.display = 'none');
   document.querySelector('.loading.button').style.display = 'block';
   document.querySelector('.progress').style.display = 'block';
+  document.querySelector('.progress').style.display = 'block';
+
+  document.querySelectorAll('mobile.sort.image').forEach(el => el.style.display = 'block');
+
   loading = true;
 
   preloadImages().then(() => {
@@ -270,6 +296,7 @@ function start() {
     document.querySelector('.loading.button').style.display = 'none';
     document.querySelectorAll('.sorting.button').forEach(el => el.style.display = 'block');
     document.querySelectorAll('.sort.text').forEach(el => el.style.display = 'block');
+    document.querySelectorAll('.mobile.sort.image').forEach(el => el.style.display = 'block');
     display();
   });
 }
@@ -284,7 +311,6 @@ function display() {
 
   const charNameDisp = (name, characters) => {
     const charName = reduceTextWidth(name, 'Arial 12.8px', 220);
-    console.log(typeof characters);
     const artistNames = characters.toString().replaceAll(',',', ');
     const names = artistNames.split(" ");
 
@@ -299,13 +325,20 @@ function display() {
 
   progressBar(`Battle No. ${battleNo}`, percent);
 
-  document.querySelector('.left.sort.image').src = leftChar.img;
-  document.querySelector('.right.sort.image').src = rightChar.img;
+  document.querySelectorAll('.left.sort.image').forEach(item => {
+    item.src = leftChar.img;
+  });
+  document.querySelectorAll('.right.sort.image').forEach(item => {
+    item.src = rightChar.img;
+  });
 
 
-
-  document.querySelector('.left.sort.text').innerHTML = charNameDisp(leftChar.name, leftChar.opts.character);
-  document.querySelector('.right.sort.text').innerHTML = charNameDisp(rightChar.name, rightChar.opts.character);
+  document.querySelectorAll('.left.sort.text').forEach(item => {
+    item.innerHTML = charNameDisp(leftChar.name, leftChar.opts.character);
+  });
+  document.querySelectorAll('.right.sort.text').forEach(item => {
+    item.innerHTML = charNameDisp(rightChar.name, rightChar.opts.character);
+  });
 
   /** Autopick if choice has been given. */
   if (choices.length !== battleNo - 1) {
