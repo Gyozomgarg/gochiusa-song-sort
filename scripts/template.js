@@ -34,8 +34,8 @@ dataSet[dataSetVersion].options = [
       { name: "Petit Rabbit's with Beans", key: "petit-beans" },
       { name: "ChiMaMe-Tai", key: "chimame" },
       { name: "Chi(ya)MaMe", key: "chiyamame" },
-      { name: "At Their Mercy Corp", key: "atmc" },
-      { name: "Spokesmodel Corp", key: "smc" },
+      { name: "At Their Mercy Corps", key: "atmc" },
+      { name: "Spokesmodel Corps", key: "smc" },
       { name: "Happine", key: "happine" },
       { name: "Mistral", key: "mistral" },
       { name: "Diva", key: "diva" }

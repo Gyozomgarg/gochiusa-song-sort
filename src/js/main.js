@@ -194,7 +194,8 @@ function start() {
   });
 
   if (characterDataToSort.length < 2) {
-    alert('Cannot sort with less than two characters. Please reselect.');
+    alert('Encountered an error. This may occur when selecting subgroups with few total songs. Please reselect.');
+    console.log(characterDataToSort);
     return;
   }
 

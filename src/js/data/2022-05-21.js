@@ -34,28 +34,30 @@ dataSet[dataSetVersion].options = [
       { name: "Petit Rabbit's with Beans", key: "petit-beans" },
       { name: "ChiMaMe-Tai", key: "chimame" },
       { name: "Chi(ya)MaMe", key: "chiyamame" },
-      { name: "At Their Mercy Corp", key: "atmc" },
-      { name: "Spokesmodel Corp", key: "smc" },
+      { name: "At Their Mercy Corps", key: "atmc" },
+      { name: "Spokesmodel Corps", key: "smc" },
       { name: "Happine", key: "happine" },
       { name: "Mistral", key: "mistral" },
       { name: "Diva", key: "diva" }
     ]
-  },
-  {
-    name: "Remove Solo Verisons",
-    key: "solo-ver",
-    tooltip: "Check this to remove solo versions of group songs."
-  },
-  {
-    name: "Remove Covers",
-    key: "cover-ver",
-    tooltip: "Check this to remove cover versions of group songs."
-  },
-  {
-    name: "Remove Rearranges",
-    key: "rearrange-ver",
-    tooltip: "Check this to remove rearrange versions of group songs."
   }
+  // TODO Add Covers, Rearrange, and Solos to the dataset
+  // },
+  // {
+  //   name: "Remove Solo Verisons",
+  //   key: "solo-ver",
+  //   tooltip: "Check this to remove solo versions of group songs."
+  // },
+  // {
+  //   name: "Remove Covers",
+  //   key: "cover-ver",
+  //   tooltip: "Check this to remove cover versions of group songs."
+  // },
+  // {
+  //   name: "Remove Rearranges",
+  //   key: "rearrange-ver",
+  //   tooltip: "Check this to remove rearrange versions of group songs."
+  // }
 ];
 
 dataSet[dataSetVersion].characterData = [
@@ -1052,7 +1054,7 @@ dataSet[dataSetVersion].characterData = [
         "maya",
         "megu"
       ],
-      "subgroup": []
+      "subgroup": ["mistral"]
     }
   },
   {
