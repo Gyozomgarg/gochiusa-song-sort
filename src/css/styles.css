@@ -22,6 +22,7 @@ body {
   border: 1px solid black;
   padding: 3px;
   margin: 2px 0px;
+  border-radius: 15px;
 }
 
 .progresstext {
@@ -34,24 +35,26 @@ body {
 
 .progressfill {
   height: 20px;
-  background-color: lightgreen;
+  background-color: #c3867a;
   width: 0%;
+  border-radius: 15px;
 }
 
 .sorter {
     margin: 0px auto;
     display: grid;
-    grid-template-columns: 33% 34% 33%;
-    grid-gap: 5px;
+    grid-template-columns: 31% 34.5% 31%;
+    place-content: space-between;
     width: 80%;
 }
 
 .button {
-  border: 1px solid black;
+  border: 3px solid #734A3A;
   text-align: center;
   padding: 10%;
   grid-column: 2 / 3;
   cursor: pointer;
+  border-radius: 20px;
 }
 
 .starting.start.button {
@@ -61,11 +64,13 @@ body {
 .starting.load.button {
   grid-row: span 3;
   display: none;
+  margin-top: 10px;
 }
 
 .sorting.button, .finished.button {
   grid-row: span 2;
   display: none;
+  margin-top: 10px;
 }
 
 .loading.button {
@@ -121,25 +126,33 @@ body {
 .sorter > .text {
   display: none;
   cursor: pointer;
+  user-select:none;
+  margin-top: 10px;
 }
 
 .sorter > .text > p {
-  margin: 0.5em 5px 5px;
-  width: calc(100%-10px);
+  padding: 5px 5px;
   text-align: center;
   line-height: 1.5em;
   font-size: 1.25em;
   font-weight: bold;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .sorter > .left {
   grid-column: 1 / 2;
-  border: 1px solid #000000;
+  border: 3px solid #734A3A;
+  border-radius: 20px;
+  max-width: -webkit-fill-available;
 }
 
 .sorter > .right {
   grid-column: 3 / 4;
-  border: 1px solid #000000;
+  border: 3px solid #734A3A;
+  border-radius: 20px;
+  max-width: -webkit-fill-available;
 }
 
 .options {
@@ -282,4 +295,117 @@ a:hover {
 
 a:visited {
   color: #6600FF;
+}
+
+h2 {
+    display: block;
+    font-size: 1.5em;
+    margin-top: 0.83em;
+    margin-bottom: 0.83em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+}
+h3 {
+    display: block;
+    font-size: 1.17em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+}
+
+strong {
+    font-weight: bold;
+}
+
+.home-img {
+  max-width: -webkit-fill-available;
+  border-radius: 150px;
+}
+
+.container:before, .container:after {
+    position: fixed;
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+    width: 12%;
+    max-width: 160px;
+    background: url(../assets/deco_side.svg) top / 100% auto;
+    content: "";
+}
+.container:before {
+    left: 0;
+    transform: scaleX(-1);
+}
+.container:after {
+    right: 0;
+}
+/** Since we use embeds the images break lol **/
+.finished.getimg {
+    display: none !important;
+}
+
+/** Hover Effects for options **/
+.starting.start {
+  background-color: #FFF9F3;
+  transition: background 0.25s linear;
+}
+.starting.start:hover {
+  background-color: #fbdbeb;
+  transition: background 0.25s linear;
+}
+
+.starting.load {
+  background-color: #FFF9F3;
+  transition: background 0.25s linear;
+}
+.starting.load:hover {
+  background-color: #a4e6ff;
+  transition: background 0.25s linear;
+}
+.left.sort.text {
+  background-color: #FFF9F3;
+  transition: background 0.25s linear;
+}
+.left.sort.text:hover {
+  background-color: #f8b5be;
+  transition: background 0.25s linear;
+}
+
+.right.sort.text {
+  background-color: #FFF9F3;
+  transition: background 0.25s linear;
+}
+.right.sort.text:hover {
+  background-color: #c9daf8;
+  transition: background 0.25s linear;
+}
+
+.sorting.tie {
+  background-color: #FFF9F3;
+  transition: background 0.25s linear;
+}
+.sorting.tie:hover {
+  background-color: #fdebac;
+  transition: background 0.25s linear;
+}
+
+.sorting.undo {
+  background-color: #FFF9F3;
+  transition: background 0.25s linear;
+}
+.sorting.undo:hover {
+  background-color: #b5eba2;
+  transition: background 0.25s linear;
+}
+
+.sorting.save {
+  background-color: #FFF9F3;
+  transition: background 0.25s linear;
+}
+.sorting.save:hover {
+  background-color: #baaaed;
+  transition: background 0.25s linear;
 }
