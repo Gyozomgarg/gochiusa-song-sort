@@ -231,7 +231,7 @@ dataSet[dataSetVersion].characterData = [
         "chiya"
       ],
       "subgroup": [],
-      "group-song": true
+      "group-song": false
     }
   },
   {
@@ -255,7 +255,7 @@ dataSet[dataSetVersion].characterData = [
         "chino"
       ],
       "subgroup": [],
-      "group-song": true
+      "group-song": false
     }
   },
   {
@@ -266,7 +266,7 @@ dataSet[dataSetVersion].characterData = [
         "chino"
       ],
       "subgroup": [],
-      "group-song": true
+      "group-song": false
     }
   },
   {
@@ -1241,7 +1241,7 @@ dataSet[dataSetVersion].characterData = [
         "chino"
       ],
       "subgroup": [],
-      "group-song": false
+      "group-song": true
     }
   },
   {
