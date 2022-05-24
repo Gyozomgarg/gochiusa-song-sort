@@ -622,4 +622,8 @@ Loading Screen
       grid-gap: 10px;
       width: 85%;
   }
+
+  .loader {
+    left: 45%;
+  }
 } /** End Mobile Media **/
