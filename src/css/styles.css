@@ -332,7 +332,7 @@ sub {
 
 .home-img {
   max-width: -webkit-fill-available;
-  border-radius: 150px;
+  border-radius: 300px;
   user-select: none;
 }
 
