@@ -282,6 +282,7 @@ label:hover {
   grid-column: 2 / 3;
   border-left: 1px solid #000;
   text-align: center;
+  width: 300px;
 }
 
 .info {
@@ -359,10 +360,6 @@ sub {
 }
 .container:after {
     right: 0;
-}
-/** Since we use embeds the images break lol **/
-.finished.getimg {
-    display: none !important;
 }
 
 /** Hover Effects for options **/
@@ -446,6 +443,17 @@ sub {
 }
 .finished.list:hover {
   background-color: #DCEBA6;
+  transition: background 0.25s linear;
+}
+
+/** Since we use embeds the images break lol **/
+.finished.getimg {
+    /* display: none !important; */
+    background-color: #fff9f3;
+}
+
+.finished.getimg:hover {
+  background-color: #56848a;
   transition: background 0.25s linear;
 }
 

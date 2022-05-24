@@ -85,7 +85,7 @@ function init() {
     item.addEventListener('click', () => saveProgress('Last Result'));
   });
   document.querySelectorAll('.finished.getimg.button').forEach(item => {
-    item.addEventListener('click', generateImage);
+    item.addEventListener('click', preGenerateImage);
   });
   document.querySelectorAll('.finished.list.button').forEach(item => {
     item.addEventListener('click', generateTextList);
@@ -112,7 +112,7 @@ function init() {
     else if (timeTaken && choices.length === battleNo - 1) {
       switch(ev.key) {
         case 'k': case '1': saveProgress('Last Result'); break;
-        case 'j': case '2': generateImage(); break;
+        case 'j': case '2': preGenerateImage(); break;
         case 's': case '3': generateTextList(); break;
         default: break;
       }
@@ -635,6 +635,17 @@ function clearProgress() {
   document.querySelectorAll('.starting.load.button').forEach(el => el.style.display = 'none');
 }
 
+function preGenerateImage() {
+  // Set results to 0 so we dont get empty spaces in the generated image
+  const select = document.querySelector('.image.selector > select');
+  select.value = '0';
+  result(0);
+  // Notes for making changes to table itself for canvas
+  // document.querySelector('.results');
+  // const resultsTable = document.querySelector('.results');
+  generateImage();
+}
+
 function generateImage() {
   const timeFinished = timestamp + timeTaken;
   const tzoffset = (new Date()).getTimezoneOffset() * 60000;
@@ -645,13 +656,13 @@ function generateImage() {
     const imgButton = document.querySelector('.finished.getimg.button');
     const resetButton = document.createElement('a');
 
-    imgButton.removeEventListener('click', generateImage);
+    imgButton.removeEventListener('click', preGenerateImage);
     imgButton.innerHTML = '';
     imgButton.insertAdjacentHTML('beforeend', `<a href="${dataURL}" download="${filename}">Download Image</a><br><br>`);
 
     resetButton.insertAdjacentText('beforeend', 'Reset');
     resetButton.addEventListener('click', (event) => {
-      imgButton.addEventListener('click', generateImage);
+      imgButton.addEventListener('click', preGenerateImage);
       imgButton.innerHTML = 'Generate Image';
       event.stopPropagation();
     });
@@ -876,11 +887,11 @@ function reduceTextWidth(text, font, width) {
   const canvas = reduceTextWidth.canvas || (reduceTextWidth.canvas = document.createElement("canvas"));
   const context = canvas.getContext("2d");
   context.font = font;
-  if (context.measureText(text).width < width * 0.8) {
+  if (context.measureText(text).width < width) {
     return text;
   } else {
     let reducedText = text;
-    while (context.measureText(reducedText).width + context.measureText('..').width > width * 0.8) {
+    while (context.measureText(reducedText).width + context.measureText('..').width > width ) {
       reducedText = reducedText.slice(0, -1);
     }
     return reducedText + '..';
