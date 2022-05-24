@@ -160,6 +160,14 @@ body {
   max-width: -webkit-fill-available;
 }
 
+iframe.left.sort.image,
+iframe.right.sort.image {
+    background-image: url("https://sort.chimame.cafe/src/assets/not-available.jpg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
 .options {
   margin: 1em auto;
   display: grid;
