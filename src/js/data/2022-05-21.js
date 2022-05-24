@@ -61,7 +61,17 @@ dataSet[dataSetVersion].options = [
   // }
 ];
 
-dataSet[dataSetVersion].characterData = [
+function populateGroupSongTag(songs) {
+  return songs.map((song) => ({
+    ...song,
+    opts: {
+      ...song.opts,
+      "group-song": song.opts.character.length > 1,
+    },
+  }))
+}
+
+dataSet[dataSetVersion].characterData = populateGroupSongTag([
   {
     "name": "「ラビットハウスへ行こうよ♪」のうた",
     "img": "https://www.youtube.com/embed/3FMNsZj5G3w",
@@ -70,7 +80,6 @@ dataSet[dataSetVersion].characterData = [
         "cocoa"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -81,7 +90,6 @@ dataSet[dataSetVersion].characterData = [
         "syaro"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -96,7 +104,6 @@ dataSet[dataSetVersion].characterData = [
       "subgroup": [
         "chimame"
       ],
-      "group-song": true
     }
   },
   {
@@ -107,7 +114,6 @@ dataSet[dataSetVersion].characterData = [
         "rize"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -118,7 +124,6 @@ dataSet[dataSetVersion].characterData = [
         "mocha"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -135,7 +140,6 @@ dataSet[dataSetVersion].characterData = [
       "subgroup": [
         "petit"
       ],
-      "group-song": true
     }
   },
   {
@@ -152,7 +156,6 @@ dataSet[dataSetVersion].characterData = [
       "subgroup": [
         "petit"
       ],
-      "group-song": true
     }
   },
   {
@@ -169,7 +172,6 @@ dataSet[dataSetVersion].characterData = [
       "subgroup": [
         "petit"
       ],
-      "group-song": true
     }
   },
   {
@@ -180,7 +182,6 @@ dataSet[dataSetVersion].characterData = [
         "chiya"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -192,7 +193,6 @@ dataSet[dataSetVersion].characterData = [
         "syaro"
       ],
       "subgroup": [],
-      "group-song": true
     }
   },
   {
@@ -203,7 +203,6 @@ dataSet[dataSetVersion].characterData = [
         "chiya"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -220,7 +219,6 @@ dataSet[dataSetVersion].characterData = [
       "subgroup": [
         "petit"
       ],
-      "group-song": true
     }
   },
   {
@@ -231,7 +229,6 @@ dataSet[dataSetVersion].characterData = [
         "chiya"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -244,7 +241,6 @@ dataSet[dataSetVersion].characterData = [
         "megu"
       ],
       "subgroup": [],
-      "group-song": true
     }
   },
   {
@@ -255,7 +251,6 @@ dataSet[dataSetVersion].characterData = [
         "chino"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -266,7 +261,6 @@ dataSet[dataSetVersion].characterData = [
         "chino"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -283,7 +277,6 @@ dataSet[dataSetVersion].characterData = [
         "megu"
       ],
       "subgroup": [],
-      "group-song": true
     }
   },
   {
@@ -294,7 +287,6 @@ dataSet[dataSetVersion].characterData = [
         "chiya"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -306,7 +298,6 @@ dataSet[dataSetVersion].characterData = [
         "chino"
       ],
       "subgroup": [],
-      "group-song": true
     }
   },
   {
@@ -317,7 +308,6 @@ dataSet[dataSetVersion].characterData = [
         "chiya"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -328,7 +318,6 @@ dataSet[dataSetVersion].characterData = [
         "rize"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -339,7 +328,6 @@ dataSet[dataSetVersion].characterData = [
         "chiya"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -351,7 +339,6 @@ dataSet[dataSetVersion].characterData = [
         "syaro"
       ],
       "subgroup": [],
-      "group-song": true
     }
   },
   {
@@ -368,7 +355,6 @@ dataSet[dataSetVersion].characterData = [
       "subgroup": [
         "petit"
       ],
-      "group-song": true
     }
   },
   {
@@ -379,7 +365,6 @@ dataSet[dataSetVersion].characterData = [
         "syaro"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -390,7 +375,6 @@ dataSet[dataSetVersion].characterData = [
         "syaro"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -401,7 +385,6 @@ dataSet[dataSetVersion].characterData = [
         "syaro"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -412,7 +395,6 @@ dataSet[dataSetVersion].characterData = [
         "aoyama"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -423,7 +405,6 @@ dataSet[dataSetVersion].characterData = [
         "megu"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -434,7 +415,6 @@ dataSet[dataSetVersion].characterData = [
         "aoyama"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -445,7 +425,6 @@ dataSet[dataSetVersion].characterData = [
         "maya"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -456,7 +435,6 @@ dataSet[dataSetVersion].characterData = [
         "chiya"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -467,7 +445,6 @@ dataSet[dataSetVersion].characterData = [
         "maya"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -478,7 +455,6 @@ dataSet[dataSetVersion].characterData = [
         "megu"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -489,7 +465,6 @@ dataSet[dataSetVersion].characterData = [
         "rize"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -500,7 +475,6 @@ dataSet[dataSetVersion].characterData = [
         "chino"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -511,7 +485,6 @@ dataSet[dataSetVersion].characterData = [
         "syaro"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -523,7 +496,6 @@ dataSet[dataSetVersion].characterData = [
         "aoyama"
       ],
       "subgroup": [],
-      "group-song": true
     }
   },
   {
@@ -534,7 +506,6 @@ dataSet[dataSetVersion].characterData = [
         "rize"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -545,7 +516,6 @@ dataSet[dataSetVersion].characterData = [
         "saki"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -557,7 +527,6 @@ dataSet[dataSetVersion].characterData = [
         "syaro"
       ],
       "subgroup": [],
-      "group-song": true
     }
   },
   {
@@ -568,7 +537,6 @@ dataSet[dataSetVersion].characterData = [
         "rize"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -579,7 +547,6 @@ dataSet[dataSetVersion].characterData = [
         "rize"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -590,7 +557,6 @@ dataSet[dataSetVersion].characterData = [
         "rize"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -601,7 +567,6 @@ dataSet[dataSetVersion].characterData = [
         "syaro"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -616,7 +581,6 @@ dataSet[dataSetVersion].characterData = [
       "subgroup": [
         "chiyamame"
       ],
-      "group-song": true
     }
   },
   {
@@ -627,7 +591,6 @@ dataSet[dataSetVersion].characterData = [
         "chino"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -638,7 +601,6 @@ dataSet[dataSetVersion].characterData = [
         "chino"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -649,7 +611,6 @@ dataSet[dataSetVersion].characterData = [
         "mocha"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -664,7 +625,6 @@ dataSet[dataSetVersion].characterData = [
       "subgroup": [
         "chimame"
       ],
-      "group-song": true
     }
   },
   {
@@ -675,7 +635,6 @@ dataSet[dataSetVersion].characterData = [
         "cocoa"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -692,7 +651,6 @@ dataSet[dataSetVersion].characterData = [
       "subgroup": [
         "petit"
       ],
-      "group-song": true
     }
   },
   {
@@ -703,7 +661,6 @@ dataSet[dataSetVersion].characterData = [
         "rize"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -714,7 +671,6 @@ dataSet[dataSetVersion].characterData = [
         "maya"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -726,7 +682,6 @@ dataSet[dataSetVersion].characterData = [
         "syaro"
       ],
       "subgroup": [],
-      "group-song": true
     }
   },
   {
@@ -741,7 +696,6 @@ dataSet[dataSetVersion].characterData = [
       "subgroup": [
         "chiyamame"
       ],
-      "group-song": true
     }
   },
   {
@@ -754,7 +708,6 @@ dataSet[dataSetVersion].characterData = [
         "takahiro"
       ],
       "subgroup": [],
-      "group-song": true
     }
   },
   {
@@ -765,7 +718,6 @@ dataSet[dataSetVersion].characterData = [
         "yura"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -776,7 +728,6 @@ dataSet[dataSetVersion].characterData = [
         "chino"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -787,7 +738,6 @@ dataSet[dataSetVersion].characterData = [
         "takahiro"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -798,7 +748,6 @@ dataSet[dataSetVersion].characterData = [
         "syaro"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -809,7 +758,6 @@ dataSet[dataSetVersion].characterData = [
         "takahiro"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -820,7 +768,6 @@ dataSet[dataSetVersion].characterData = [
         "syaro"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -831,7 +778,6 @@ dataSet[dataSetVersion].characterData = [
         "rize"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -844,7 +790,6 @@ dataSet[dataSetVersion].characterData = [
         "megu"
       ],
       "subgroup": [],
-      "group-song": true
     }
   },
   {
@@ -856,7 +801,6 @@ dataSet[dataSetVersion].characterData = [
         "rize"
       ],
       "subgroup": [],
-      "group-song": true
     }
   },
   {
@@ -868,7 +812,6 @@ dataSet[dataSetVersion].characterData = [
         "maya"
       ],
       "subgroup": [],
-      "group-song": true
     }
   },
   {
@@ -880,7 +823,6 @@ dataSet[dataSetVersion].characterData = [
         "mocha"
       ],
       "subgroup": [],
-      "group-song": true
     }
   },
   {
@@ -891,7 +833,6 @@ dataSet[dataSetVersion].characterData = [
         "cocoa"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -903,7 +844,6 @@ dataSet[dataSetVersion].characterData = [
         "maya"
       ],
       "subgroup": [],
-      "group-song": true
     }
   },
   {
@@ -914,7 +854,6 @@ dataSet[dataSetVersion].characterData = [
         "chino"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -929,7 +868,6 @@ dataSet[dataSetVersion].characterData = [
       "subgroup": [
         "atmc"
       ],
-      "group-song": true
     }
   },
   {
@@ -948,7 +886,6 @@ dataSet[dataSetVersion].characterData = [
         "mocha"
       ],
       "subgroup": [],
-      "group-song": true
     }
   },
   {
@@ -959,7 +896,6 @@ dataSet[dataSetVersion].characterData = [
         "chino"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -970,7 +906,6 @@ dataSet[dataSetVersion].characterData = [
         "megu"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -981,7 +916,6 @@ dataSet[dataSetVersion].characterData = [
         "chino"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -992,7 +926,6 @@ dataSet[dataSetVersion].characterData = [
         "megu"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -1003,7 +936,6 @@ dataSet[dataSetVersion].characterData = [
         "aoyama"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -1018,7 +950,6 @@ dataSet[dataSetVersion].characterData = [
       "subgroup": [
         "chimame"
       ],
-      "group-song": true
     }
   },
   {
@@ -1029,7 +960,6 @@ dataSet[dataSetVersion].characterData = [
         "chiya"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -1040,7 +970,6 @@ dataSet[dataSetVersion].characterData = [
         "chiya"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -1051,7 +980,6 @@ dataSet[dataSetVersion].characterData = [
         "maya"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -1062,7 +990,6 @@ dataSet[dataSetVersion].characterData = [
         "chino"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -1073,7 +1000,6 @@ dataSet[dataSetVersion].characterData = [
         "mocha"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -1084,7 +1010,6 @@ dataSet[dataSetVersion].characterData = [
         "mocha"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -1095,7 +1020,6 @@ dataSet[dataSetVersion].characterData = [
         "megu"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -1106,7 +1030,6 @@ dataSet[dataSetVersion].characterData = [
         "chino"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -1121,7 +1044,6 @@ dataSet[dataSetVersion].characterData = [
       "subgroup": [
         "diva"
       ],
-      "group-song": true
     }
   },
   {
@@ -1132,7 +1054,6 @@ dataSet[dataSetVersion].characterData = [
         "syaro"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -1145,7 +1066,6 @@ dataSet[dataSetVersion].characterData = [
         "megu"
       ],
       "subgroup": ["mistral"],
-      "group-song": true
     }
   },
   {
@@ -1156,7 +1076,6 @@ dataSet[dataSetVersion].characterData = [
         "takahiro"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -1167,7 +1086,6 @@ dataSet[dataSetVersion].characterData = [
         "cocoa"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -1178,7 +1096,6 @@ dataSet[dataSetVersion].characterData = [
         "chino"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -1193,7 +1110,6 @@ dataSet[dataSetVersion].characterData = [
       "subgroup": [
         "chimame"
       ],
-      "group-song": true
     }
   },
   {
@@ -1206,7 +1122,6 @@ dataSet[dataSetVersion].characterData = [
         "rize"
       ],
       "subgroup": [],
-      "group-song": true
     }
   },
   {
@@ -1218,7 +1133,6 @@ dataSet[dataSetVersion].characterData = [
         "rin"
       ],
       "subgroup": [],
-      "group-song": true
     }
   },
   {
@@ -1229,7 +1143,6 @@ dataSet[dataSetVersion].characterData = [
         "aoyama"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -1241,7 +1154,6 @@ dataSet[dataSetVersion].characterData = [
         "chino"
       ],
       "subgroup": [],
-      "group-song": true
     }
   },
   {
@@ -1256,7 +1168,6 @@ dataSet[dataSetVersion].characterData = [
       "subgroup": [
         "chimame"
       ],
-      "group-song": true
     }
   },
   {
@@ -1267,7 +1178,6 @@ dataSet[dataSetVersion].characterData = [
         "cocoa"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -1282,7 +1192,6 @@ dataSet[dataSetVersion].characterData = [
       "subgroup": [
         "mistral"
       ],
-      "group-song": true
     }
   },
   {
@@ -1301,7 +1210,6 @@ dataSet[dataSetVersion].characterData = [
       "subgroup": [
         "petit-beans"
       ],
-      "group-song": true
     }
   },
   {
@@ -1312,7 +1220,6 @@ dataSet[dataSetVersion].characterData = [
         "megu"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -1327,7 +1234,6 @@ dataSet[dataSetVersion].characterData = [
       "subgroup": [
         "smc"
       ],
-      "group-song": true
     }
   },
   {
@@ -1339,7 +1245,6 @@ dataSet[dataSetVersion].characterData = [
         "syaro"
       ],
       "subgroup": [],
-      "group-song": true
     }
   },
   {
@@ -1350,7 +1255,6 @@ dataSet[dataSetVersion].characterData = [
         "cocoa"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -1369,7 +1273,6 @@ dataSet[dataSetVersion].characterData = [
       "subgroup": [
         "petit-beans"
       ],
-      "group-song": true
     }
   },
   {
@@ -1380,7 +1283,6 @@ dataSet[dataSetVersion].characterData = [
         "chino"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -1392,7 +1294,6 @@ dataSet[dataSetVersion].characterData = [
         "chiya"
       ],
       "subgroup": [],
-      "group-song": true
     }
   },
   {
@@ -1403,7 +1304,6 @@ dataSet[dataSetVersion].characterData = [
         "chino"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -1415,7 +1315,6 @@ dataSet[dataSetVersion].characterData = [
         "chino"
       ],
       "subgroup": [],
-      "group-song": true
     }
   },
   {
@@ -1426,7 +1325,6 @@ dataSet[dataSetVersion].characterData = [
         "megu"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -1437,7 +1335,6 @@ dataSet[dataSetVersion].characterData = [
         "cocoa"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -1448,7 +1345,6 @@ dataSet[dataSetVersion].characterData = [
         "rize"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -1463,7 +1359,6 @@ dataSet[dataSetVersion].characterData = [
       "subgroup": [
         "chimame"
       ],
-      "group-song": true
     }
   },
   {
@@ -1474,7 +1369,6 @@ dataSet[dataSetVersion].characterData = [
         "rize"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -1489,7 +1383,6 @@ dataSet[dataSetVersion].characterData = [
       "subgroup": [
         "chimame"
       ],
-      "group-song": true
     }
   },
   {
@@ -1504,7 +1397,6 @@ dataSet[dataSetVersion].characterData = [
       "subgroup": [
         "chimame"
       ],
-      "group-song": true
     }
   },
   {
@@ -1515,7 +1407,6 @@ dataSet[dataSetVersion].characterData = [
         "syaro"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -1526,7 +1417,6 @@ dataSet[dataSetVersion].characterData = [
         "syaro"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -1537,7 +1427,6 @@ dataSet[dataSetVersion].characterData = [
         "mocha"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -1548,7 +1437,6 @@ dataSet[dataSetVersion].characterData = [
         "cocoa"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -1559,7 +1447,6 @@ dataSet[dataSetVersion].characterData = [
         "megu"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -1574,7 +1461,6 @@ dataSet[dataSetVersion].characterData = [
       "subgroup": [
         "chimame"
       ],
-      "group-song": true
     }
   },
   {
@@ -1585,7 +1471,6 @@ dataSet[dataSetVersion].characterData = [
         "maya"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -1602,7 +1487,6 @@ dataSet[dataSetVersion].characterData = [
       "subgroup": [
         "petit"
       ],
-      "group-song": true
     }
   },
   {
@@ -1619,7 +1503,6 @@ dataSet[dataSetVersion].characterData = [
       "subgroup": [
         "petit"
       ],
-      "group-song": true
     }
   },
   {
@@ -1636,7 +1519,6 @@ dataSet[dataSetVersion].characterData = [
       "subgroup": [
         "petit"
       ],
-      "group-song": true
     }
   },
   {
@@ -1648,7 +1530,6 @@ dataSet[dataSetVersion].characterData = [
         "chiya"
       ],
       "subgroup": [],
-      "group-song": true
     }
   },
   {
@@ -1663,7 +1544,6 @@ dataSet[dataSetVersion].characterData = [
       "subgroup": [
         "atmc"
       ],
-      "group-song": true
     }
   },
   {
@@ -1674,7 +1554,6 @@ dataSet[dataSetVersion].characterData = [
         "chiya"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -1685,7 +1564,6 @@ dataSet[dataSetVersion].characterData = [
         "megu"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -1696,7 +1574,6 @@ dataSet[dataSetVersion].characterData = [
         "syaro"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -1713,7 +1590,6 @@ dataSet[dataSetVersion].characterData = [
       "subgroup": [
         "petit"
       ],
-      "group-song": true
     }
   },
   {
@@ -1732,7 +1608,6 @@ dataSet[dataSetVersion].characterData = [
         "mocha"
       ],
       "subgroup": [],
-      "group-song": true
     }
   },
   {
@@ -1743,7 +1618,6 @@ dataSet[dataSetVersion].characterData = [
         "cocoa"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -1754,7 +1628,6 @@ dataSet[dataSetVersion].characterData = [
         "maya"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -1765,7 +1638,6 @@ dataSet[dataSetVersion].characterData = [
         "cocoa"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -1780,7 +1652,6 @@ dataSet[dataSetVersion].characterData = [
         "syaro"
       ],
       "subgroup": [],
-      "group-song": true
     }
   },
   {
@@ -1791,7 +1662,6 @@ dataSet[dataSetVersion].characterData = [
         "chino"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -1806,7 +1676,6 @@ dataSet[dataSetVersion].characterData = [
       "subgroup": [
         "chimame"
       ],
-      "group-song": true
     }
   },
   {
@@ -1817,7 +1686,6 @@ dataSet[dataSetVersion].characterData = [
         "maya"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -1828,7 +1696,6 @@ dataSet[dataSetVersion].characterData = [
         "maya"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -1839,7 +1706,6 @@ dataSet[dataSetVersion].characterData = [
         "fuyu"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -1850,7 +1716,6 @@ dataSet[dataSetVersion].characterData = [
         "mocha"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -1865,7 +1730,6 @@ dataSet[dataSetVersion].characterData = [
       "subgroup": [
         "chimame"
       ],
-      "group-song": true
     }
   },
   {
@@ -1877,7 +1741,6 @@ dataSet[dataSetVersion].characterData = [
         "syaro"
       ],
       "subgroup": [],
-      "group-song": true
     }
   },
   {
@@ -1888,7 +1751,6 @@ dataSet[dataSetVersion].characterData = [
         "chino"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -1899,7 +1761,6 @@ dataSet[dataSetVersion].characterData = [
         "aoyama"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -1911,7 +1772,6 @@ dataSet[dataSetVersion].characterData = [
         "megu"
       ],
       "subgroup": [],
-      "group-song": true
     }
   },
   {
@@ -1922,7 +1782,6 @@ dataSet[dataSetVersion].characterData = [
         "rize"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -1933,7 +1792,6 @@ dataSet[dataSetVersion].characterData = [
         "maya"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -1944,7 +1802,6 @@ dataSet[dataSetVersion].characterData = [
         "aoyama"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -1956,7 +1813,6 @@ dataSet[dataSetVersion].characterData = [
         "syaro"
       ],
       "subgroup": [],
-      "group-song": true
     }
   },
   {
@@ -1973,7 +1829,6 @@ dataSet[dataSetVersion].characterData = [
       "subgroup": [
         "petit"
       ],
-      "group-song": true
     }
   },
   {
@@ -1984,7 +1839,6 @@ dataSet[dataSetVersion].characterData = [
         "aoyama"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -1996,7 +1850,6 @@ dataSet[dataSetVersion].characterData = [
         "chino"
       ],
       "subgroup": [],
-      "group-song": true
     }
   },
   {
@@ -2011,7 +1864,6 @@ dataSet[dataSetVersion].characterData = [
       "subgroup": [
         "happine"
       ],
-      "group-song": true
     }
   },
   {
@@ -2023,7 +1875,6 @@ dataSet[dataSetVersion].characterData = [
         "megu"
       ],
       "subgroup": [],
-      "group-song": true
     }
   },
   {
@@ -2042,7 +1893,6 @@ dataSet[dataSetVersion].characterData = [
         "mocha"
       ],
       "subgroup": [],
-      "group-song": true
     }
   },
   {
@@ -2057,7 +1907,6 @@ dataSet[dataSetVersion].characterData = [
       "subgroup": [
         "chimame"
       ],
-      "group-song": true
     }
   },
   {
@@ -2068,7 +1917,6 @@ dataSet[dataSetVersion].characterData = [
         "cocoa"
       ],
       "subgroup": [],
-      "group-song": false
     }
   },
   {
@@ -2079,7 +1927,6 @@ dataSet[dataSetVersion].characterData = [
         "maya"
       ],
       "subgroup": [],
-      "group-song": false
     }
   }
-];
+]);
