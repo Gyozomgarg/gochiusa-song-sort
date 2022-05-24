@@ -1,5 +1,5 @@
 // Requires node v17.5+, run with:
-// node scripts/get-data.mjs --experimental-fetch
+// node scripts/get-cover-rearrange.mjs --experimental-fetch
 
 import fs from 'node:fs/promises';
 import path from 'node:path';
@@ -8,18 +8,13 @@ import { fileURLToPath } from 'url';
 const SCRIPT_DIR = path.dirname(fileURLToPath(import.meta.url));
 const ROOT_DIR = path.dirname(SCRIPT_DIR);
 const OUTPUT_DIR = path.join(ROOT_DIR, 'src/js/data/');
-const date = (new Date()).toISOString().split('T')[0];
-const OUTPUT_FILE = path.join(OUTPUT_DIR, `${date}.js`);
 
-const TEMPLATE = await fs.readFile(path.join(SCRIPT_DIR, "template.js"), {encoding: 'utf-8'});
+// Quick & dirty script to add the cover & rearrange songs.
+// TODO(Darkpi): properly refactor things so it's easier to do this...
+const INPUT_FILE = path.join(OUTPUT_DIR, "2022-05-21.js")
 
 const DB_URL = 'https://storage.googleapis.com/gochiusa-lyrics-quiz-twitter.appspot.com/db/data.json';
 const data = await (await fetch(DB_URL)).json();
-// Alternatively for lower nodejs version, just fill the above "data" with
-// downloaded JSON file :P
-// Comment out the last two lines, put the data.json in the same folder as this
-// file, and use the following instead:
-// const data = JSON.parse(await fs.readFile(path.join(SCRIPT_DIR, 'data.json'), {encoding: 'utf-8'}));
 
 const CHARACTER_MAP = {
   "ココア": "cocoa",
@@ -50,14 +45,13 @@ const SUBGROUP_MAP = {
   "Diva": "diva"
 }
 
+const oldFile = await fs.readFile(INPUT_FILE, {encoding: 'utf-8'});
+
+const oldSongs = eval(/populateGroupSongTag\((\[.*?\])\);/s.exec(oldFile)[1])
+
 const songs = [];
 
 for (const song of data['songs']) {
-  if (song['derived'] != null) {
-    // TODO(Darkpi): Do we want to add some derived songs in? For example
-    // rearranged / cover ones? Or maybe that should be an option?
-    continue;
-  }
   const {title, artist, characters, links} = song;
   const img = (() => {
     const link = links['YoutubeMusic'];
@@ -77,19 +71,33 @@ for (const song of data['songs']) {
   });
 
   const subgroup = SUBGROUP_MAP[artist] == null ? [] : [SUBGROUP_MAP[artist]];
-
-  songs.push({
+  const data = {
     name: title,
     img,
     opts: {
       character: mappedCharacters,
       subgroup,
     },
-  })
+  }
+
+  if (oldSongs.find((s) => s.name === data.name)) {
+    continue;
+  }
+
+  if (song['derived'] != null) {
+    if (song['derived'].kind === 'REARRANGED') {
+      data.opts['rearrange-ver'] = true;
+    } else if (song['derived'].kind === 'SOLO') {
+      data.opts['solo-ver'] = true;
+    } else if (song['derived'].kind === 'COVER') {
+      data.opts['cover-ver'] = true;
+    } else {
+      continue;
+    }
+  }
+
+  songs.push(data)
 }
 
-await fs.writeFile(
-  OUTPUT_FILE,
-  TEMPLATE.replace('{DATE}', date).replace('{SONGS}', JSON.stringify(songs, null, 2)),
-  {encoding: 'utf-8'}
-);
+// Just manually paste this to the new file :P
+console.log(JSON.stringify([...oldSongs, ...songs], null, 2));
