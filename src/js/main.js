@@ -155,8 +155,8 @@ function init() {
   /** Decode query string if available. */
   if (window.location.search.slice(1) !== '') decodeQuery();
 
-  $(".preloader").fadeOut("slow");
-  $("#overlayer").fadeOut("slow");
+  $(".preloader").delay(500).fadeOut("slow");
+  $("#overlayer").delay(500).fadeOut("slow");
 }
 
 /** Begin sorting. */
