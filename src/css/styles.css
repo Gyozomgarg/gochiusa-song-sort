@@ -213,7 +213,7 @@ label:hover {
   font-size: 1em;
   display: flex;
   align-content: flex-start;
-  width: auto;
+  width: 80%;
   margin: 2em auto;
 }
 
@@ -235,7 +235,6 @@ label:hover {
   height: 15px;
   margin-bottom: -1px;
   display: grid;
-  width: 345px;
   grid-template-columns: min-content;
   border: 1px solid #000;
   margin-right: 5px;
