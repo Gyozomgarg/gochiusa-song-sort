@@ -575,6 +575,11 @@ Loading Screen
 
 .lang-select {
   margin: 10px;
+  text-align: center;
+}
+
+.disclaimer {
+  margin: 10px;
 }
 
 /**
