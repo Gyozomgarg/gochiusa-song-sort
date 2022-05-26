@@ -74,7 +74,7 @@ function populateGroupSongTag(songs) {
 dataSet[dataSetVersion].characterData = populateGroupSongTag([
   {
     "name": "「ラビットハウスへ行こうよ♪」のうた",
-    "img": "https://www.youtube.com/embed/3FMNsZj5G3w",
+    "img": "",
     "opts": {
       "character": [
         "cocoa"
@@ -144,7 +144,7 @@ dataSet[dataSetVersion].characterData = populateGroupSongTag([
   },
   {
     "name": "予感のぴんぽん聞こえたら",
-    "img": "https://www.youtube.com/embed/cStP-pJ-DmM",
+    "img": "",
     "opts": {
       "character": [
         "cocoa",
@@ -233,7 +233,7 @@ dataSet[dataSetVersion].characterData = populateGroupSongTag([
   },
   {
     "name": "木もれび青春譜",
-    "img": "https://www.youtube.com/embed/L9FfnSXGGd8",
+    "img": "",
     "opts": {
       "character": [
         "chino",
@@ -429,7 +429,7 @@ dataSet[dataSetVersion].characterData = populateGroupSongTag([
   },
   {
     "name": "振り向けば月、いいえ団子。",
-    "img": "https://www.youtube.com/embed/ZZo0-FZJFhs",
+    "img": "",
     "opts": {
       "character": [
         "chiya"
@@ -510,7 +510,7 @@ dataSet[dataSetVersion].characterData = populateGroupSongTag([
   },
   {
     "name": "銀のスプーン",
-    "img": "https://www.youtube.com/embed/jmlqWTkBj7w",
+    "img": "",
     "opts": {
       "character": [
         "saki"
@@ -762,7 +762,7 @@ dataSet[dataSetVersion].characterData = populateGroupSongTag([
   },
   {
     "name": "Hi Hi High☆",
-    "img": "https://www.youtube.com/embed/0rQBgEfFfrU",
+    "img": "",
     "opts": {
       "character": [
         "syaro"
@@ -1594,7 +1594,7 @@ dataSet[dataSetVersion].characterData = populateGroupSongTag([
   },
   {
     "name": "ハピハピ♪バースデイソング",
-    "img": "https://www.youtube.com/embed/_qof9eZ6e94",
+    "img": "",
     "opts": {
       "character": [
         "cocoa",
@@ -1879,7 +1879,7 @@ dataSet[dataSetVersion].characterData = populateGroupSongTag([
   },
   {
     "name": "わーいわーいトライ！",
-    "img": "https://www.youtube.com/embed/gLc8lAQVta8",
+    "img": "",
     "opts": {
       "character": [
         "cocoa",
