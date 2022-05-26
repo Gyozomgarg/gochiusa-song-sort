@@ -1,0 +1,5 @@
+iframe.left.sort.image,
+iframe.right.sort.image {
+  /* TODO(Darkpi): add the not available image */
+  background-image: url("https://sort.chimame.cafe/src/assets/not-available-jp.jpg");
+}

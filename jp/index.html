@@ -1,0 +1,117 @@
+<html>
+
+<head>
+  <link rel="shortcut icon" href="../src/assets/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="../src/assets/favicon.ico" type="image/x-icon">
+  <meta charset="utf-8">
+  <meta name="og:site_name" content="Gochiusa Music Sorting">
+  <meta property="og:description" content="Sort most of the Gochiusa character songs." />
+  <meta name="og:image" content="https://sort.chimame.cafe/src/assets/gochiusa-headphones-thumbnail.jpg">
+  <meta name="theme-color" content="#f8b5be">
+  <meta property="og:type" content="website" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <title>ごちうさ楽曲ソーター</title>
+
+  <link rel="stylesheet" type="text/css" href="../src/css/reset.css">
+  <link rel="stylesheet" type="text/css" href="../src/css/styles.css">
+  <link rel="stylesheet" type="text/css" href="../src/css/jp.css">
+
+  <script src="../src/js/data.js"></script>
+  <script src="../src/js/data/2022-05-21.js"></script>
+  <script src="../src/js/data/jp/2022-05-24.js"></script>
+
+  <script src="../src/js/html2canvas.min.js"></script>
+  <script src="../src/js/lz-string.min.js"></script>
+  <script src="../src/js/seedrandom.min.js"></script>
+  <script src="../src/js/i18n/jp.js"></script>
+  <script src="../src/js/main.js"></script>
+</head>
+
+<body>
+<!-- jQuery -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<div id="overlayer"></div>
+<div class="preloader">
+   <div class="loader">
+      <span class="loader-inner"></span>
+   </div>
+   <p class="loading-message">読み込み中...</p>
+</div>
+<div class="container">
+    <div class="progress">
+        <span class="progressbattle"></span>
+        <div class="progressbar">
+            <div class="progressfill"><span class="progresstext"></span></div>
+        </div>
+    </div>
+
+    <div class="sorter desktop">
+        <!-- <img src="../src/assets/homeLeft.png" class="left sort image"> -->
+        <iframe class="left sort image" width="240" src="https://www.youtube.com/embed/_-oEpcmI9Bo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <div class="starting start button"><img class="home-img" style="max-width: -webkit-fill-available;" src="../src/assets/gochiusa-headphones.jpg"><h3>ごちうさ楽曲ソーター</h3><h2>スタート！</h2></div>
+        <div class="starting load button">ロード<span></span></div>
+
+        <div class="loading button"><div></div><span>読み込み中...</span></div>
+
+        <div class="sorting tie button">引き分け</div>
+        <div class="sorting undo button">取り消し</div>
+        <div class="sorting save button">プログレス保存</div>
+
+        <div class="finished save button">結果URLを生成</div>
+        <div class="finished getimg button">画像を生成</div>
+        <div class="finished list button">リストを生成</div>
+
+        <!-- <img src="../src/assets/homeRight.png" class="right sort image"> -->
+        <iframe class="right sort image" width="240" src="https://www.youtube.com/embed/vRMGxzuS0_w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+        <div class="left sort text"><p></p></div>
+        <div class="right sort text"><p></p></div>
+    </div>
+
+    <div class="sorter mobile">
+      <div class="mobile starting start button"><img class="mobile home-img" style="max-width: -webkit-fill-available;" src="../src/assets/gochiusa-headphones.jpg"><h3>ごちうさ楽曲ソーター</h3><h2>スタート！</h2></div>
+      <div class="mobile starting load button">ロード<span></span></div>
+      <div class="mobile loading button"><div></div><span>読み込み中...</span></div>
+
+      <iframe class="mobile left sort image" width="240" src="https://www.youtube.com/embed/_-oEpcmI9Bo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <div class="mobile left sort text"><p></p></div>
+
+      <iframe class="mobile right sort image" width="240" src="https://www.youtube.com/embed/vRMGxzuS0_w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <div class="mobile right sort text"><p></p></div>
+
+      <div class="mobile sorting tie button">引き分け</div>
+      <div class="mobile sorting undo button">取り消し</div>
+      <div class="mobile sorting save button">プログレス保存</div>
+
+      <div class="mobile finished save button">結果URLを生成</div>
+      <div class="mobile finished getimg button">画像を生成</div>
+      <div class="mobile finished list button">リストを生成</div>
+
+    </div>
+
+
+    <div class="options"></div>
+    <div class="image selector">結果画面にエンベッドを表示：</div>
+    <div class="time taken"></div>
+    <div class="results"></div>
+
+    <div class="info">
+        <a href="https://github.com/execfera/charasort/">元のソースコード</a> | <a class="clearsave">セーブデータをクリア</a>
+        <p>ごちうさ楽曲ソーター | Nathan <a href="https://twitter.com/Gyozomgarg">(@Gyozomgarg)</a> & Darkpi <a href="https://twitter.com/Darkpiiii">(@Darkpiiii)</a> </p>
+        <br><br>
+
+        <p>ごちうさの楽曲のソーターです。ソースを選んで、スタートボタンを押してください。</p>
+        <p>2つの曲の中から好きな方をクリックするか、同じくらい好きな方や知らない方は「引き分け」をクリックしてください。</p>
+        <p>曲数は160曲以上（カバー/リアレンジ/ソロバージョンを全て含むと260曲以上）あります。全ての曲をソートすると時間がかかるので、必ずプログレスを保存してください。</p>
+
+        <br><br>
+
+        <p>ソート中のキーボード操作：H/左矢印（左を選ぶ）J/下矢印（取り消し）K/上矢印（引き分け）L/右矢印（右を選ぶ）S（保存）</p>
+        <p>ソート前のキーボード操作：S/入力キー（スタート） L（読み込む）</p>
+        <p>ほとんどの翻訳はDeepLが行っています。間違った翻訳がありましたら、ご連絡ください。(多分たくさんあると思います&#x1F923;)</p>
+
+    </div>
+</div>
+</body>
+
+</html>

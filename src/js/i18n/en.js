@@ -26,7 +26,7 @@ function msToReadableTime (milliseconds) {
   return content.slice(0,3).join(', ');
 }
 
-TOO_FEW_SONG_ERROR = 'Encountered an error. This may occur when selecting subgroups with few total songs. Please reselect.';
+TOO_FEW_SONG_ERROR = 'There was an error. There may not be enough songs to sort. Please try again.';
 getProgressBarPrompt = (battleNo) => `Battle No. ${battleNo}`;
 getProgressBarCompletedPrompt = (battleNo) => `Battle No. ${battleNo} - Completed!`;
 
@@ -42,3 +42,13 @@ FINISHED_TEXT = 'You may use this URL to share this result, or click Load Last R
 
 DOWNLOAD_IMAGE = 'Download Image';
 GENERATE_IMAGE = 'Generate Image';
+
+getSaveTypeTranslation = (s) => `Load ${s}`;
+
+mapCharacterName = (s) => {
+  return s[0].toUpperCase() + s.substr(1);
+}
+
+formatCharacterNames = (characters) => {
+  return characters.map((c) => mapCharacterName(c)).join(', ');
+}

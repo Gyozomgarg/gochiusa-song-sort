@@ -143,7 +143,9 @@ function init() {
 
   /** Show load button if save data exists. */
   if (storedSaveType) {
-    document.querySelector('.starting.load.button > span').insertAdjacentText('beforeend', storedSaveType);
+    document.querySelectorAll('.starting.load.button').forEach(el => {
+      el.innerText = getSaveTypeTranslation(storedSaveType);
+    });
     document.querySelectorAll('.starting.button').forEach(el => {
       el.style['grid-row'] = 'span 3';
       el.style.display = 'block';
@@ -314,13 +316,8 @@ function display() {
 
   const charNameDisp = (name, characters) => {
     const charName = reduceTextWidth(name, 'Arial 12.8px', 220);
-    const artistNames = characters.toString().replaceAll(',',', ');
-    const names = artistNames.split(" ");
 
-    for (let i = 0; i < names.length; i++) {
-        names[i] = names[i][0].toUpperCase() + names[i].substr(1);
-    }
-    const finalArtistNames = names.join(" ");
+    const finalArtistNames = formatCharacterNames(characters);
 
     const charTooltip = name !== charName ? name : '';
     return `<p title="${charTooltip}">${charName}<br><sub>${finalArtistNames}</sub></p>`;
@@ -526,7 +523,7 @@ function result(imageNum = 3) {
   document.querySelector('.info').style.display = 'none';
 
   const header = `<div class="result head"><div class="left">${ORDER}</div><div class="right">${NAME}</div></div>`;
-  const timeStr = `${getSortCompletedMessage(new Date(timestamp + timeTaken).toString(), timeTaken)}<a href="${location.protocol}//${sorterURL}">${DO_ANOTHER_SORTER}</a>`;
+  const timeStr = `${getSortCompletedMessage(new Date(timestamp + timeTaken).toString(), timeTaken)}<br><a href="${location.protocol}//${sorterURL}">${DO_ANOTHER_SORTER}</a>`;
   const imgRes = (char, num) => {
     const charName = reduceTextWidth(char.name, 'Arial 12px', 160);
     const charTooltip = char.name !== charName ? char.name : '';
@@ -608,6 +605,7 @@ function saveProgress(saveType) {
     const saveURL = `${location.protocol}//${sorterURL}?${saveData}`;
 
     window.prompt(saveType === 'Last Result' ? FINISHED_TEXT : IN_PROGRESS_TEXT, saveURL);
+    navigator.clipboard.writeText(saveURL);
   }
 }
 

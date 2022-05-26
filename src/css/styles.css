@@ -162,10 +162,9 @@ body {
 
 iframe.left.sort.image,
 iframe.right.sort.image {
-    background-image: url("https://sort.chimame.cafe/src/assets/not-available.jpg");
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .options {
