@@ -219,7 +219,7 @@ function start() {
   });
 
   if (characterDataToSort.length < 2) {
-    alert('Encountered an error. This may occur when selecting subgroups with few total songs. Please reselect.');
+    alert(TOO_FEW_SONG_ERROR);
     console.log(characterDataToSort);
     return;
   }
@@ -326,7 +326,7 @@ function display() {
     return `<p title="${charTooltip}">${charName}<br><sub>${finalArtistNames}</sub></p>`;
   };
 
-  progressBar(`Battle No. ${battleNo}`, percent);
+  progressBar(getProgressBarPrompt(battleNo), percent);
 
   document.querySelectorAll('.left.sort.image').forEach(item => {
     item.src = leftChar.img;
@@ -470,7 +470,7 @@ function pick(sortType) {
   if (leftIndex < 0) {
     timeTaken = timeTaken || new Date().getTime() - timestamp;
 
-    progressBar(`Battle No. ${battleNo} - Completed!`, 100);
+    progressBar(getProgressBarCompletedPrompt(battleNo), 100);
 
     result();
   } else {
@@ -525,8 +525,8 @@ function result(imageNum = 3) {
   document.querySelector('.options').style.display = 'none';
   document.querySelector('.info').style.display = 'none';
 
-  const header = '<div class="result head"><div class="left">Order</div><div class="right">Name</div></div>';
-  const timeStr = `This sorter was completed on ${new Date(timestamp + timeTaken).toString()} and took ${msToReadableTime(timeTaken)}. <a href="${location.protocol}//${sorterURL}">Do another sorter?</a>`;
+  const header = `<div class="result head"><div class="left">${ORDER}</div><div class="right">${NAME}</div></div>`;
+  const timeStr = `${getSortCompletedMessage(new Date(timestamp + timeTaken).toString(), timeTaken)}<a href="${location.protocol}//${sorterURL}">${DO_ANOTHER_SORTER}</a>`;
   const imgRes = (char, num) => {
     const charName = reduceTextWidth(char.name, 'Arial 12px', 160);
     const charTooltip = char.name !== charName ? char.name : '';
@@ -606,10 +606,8 @@ function saveProgress(saveType) {
 
   if (saveType !== 'Autosave') {
     const saveURL = `${location.protocol}//${sorterURL}?${saveData}`;
-    const inProgressText = 'You may click Load Progress after this to resume, or use this URL.';
-    const finishedText = 'You may use this URL to share this result, or click Load Last Result to view it again.';
 
-    window.prompt(saveType === 'Last Result' ? finishedText : inProgressText, saveURL);
+    window.prompt(saveType === 'Last Result' ? FINISHED_TEXT : IN_PROGRESS_TEXT, saveURL);
   }
 }
 
@@ -658,12 +656,12 @@ function generateImage() {
 
     imgButton.removeEventListener('click', preGenerateImage);
     imgButton.innerHTML = '';
-    imgButton.insertAdjacentHTML('beforeend', `<a href="${dataURL}" download="${filename}">Download Image</a><br><br>`);
+    imgButton.insertAdjacentHTML('beforeend', `<a href="${dataURL}" download="${filename}">${DOWNLOAD_IMAGE}</a><br><br>`);
 
     resetButton.insertAdjacentText('beforeend', 'Reset');
     resetButton.addEventListener('click', (event) => {
       imgButton.addEventListener('click', preGenerateImage);
-      imgButton.innerHTML = 'Generate Image';
+      imgButton.innerHTML = GENERATE_IMAGE;
       event.stopPropagation();
     });
     imgButton.insertAdjacentElement('beforeend', resetButton);
@@ -847,33 +845,6 @@ function preloadImages() {
     characterDataToSort[idx].img = imageRoot + char.img;
 
   }));
-}
-
-/**
- * Returns a readable time string from milliseconds.
- *
- * @param {number} milliseconds
- */
-function msToReadableTime (milliseconds) {
-  let t = Math.floor(milliseconds/1000);
-  const years = Math.floor(t / 31536000);
-  t = t - (years * 31536000);
-  const months = Math.floor(t / 2592000);
-  t = t - (months * 2592000);
-  const days = Math.floor(t / 86400);
-  t = t - (days * 86400);
-  const hours = Math.floor(t / 3600);
-  t = t - (hours * 3600);
-  const minutes = Math.floor(t / 60);
-  t = t - (minutes * 60);
-  const content = [];
-	if (years) content.push(years + " year" + (years > 1 ? "s" : ""));
-	if (months) content.push(months + " month" + (months > 1 ? "s" : ""));
-	if (days) content.push(days + " day" + (days > 1 ? "s" : ""));
-	if (hours) content.push(hours + " hour"  + (hours > 1 ? "s" : ""));
-	if (minutes) content.push(minutes + " minute" + (minutes > 1 ? "s" : ""));
-	if (t) content.push(t + " second" + (t > 1 ? "s" : ""));
-  return content.slice(0,3).join(', ');
 }
 
 /**
