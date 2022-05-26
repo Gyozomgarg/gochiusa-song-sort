@@ -288,6 +288,7 @@ function start() {
   /** Disable all checkboxes and hide/show appropriate parts while we preload the images. */
   document.querySelectorAll('input[type=checkbox]').forEach(cb => cb.disabled = true);
   document.querySelectorAll('.starting.button').forEach(el => el.style.display = 'none');
+  document.querySelectorAll('.lang-select').forEach(el => el.style.display = 'none');
   document.querySelector('.loading.button').style.display = 'block';
   document.querySelector('.progress').style.display = 'block';
   document.querySelector('.progress').style.display = 'block';
@@ -656,7 +657,7 @@ function generateImage() {
     imgButton.innerHTML = '';
     imgButton.insertAdjacentHTML('beforeend', `<a href="${dataURL}" download="${filename}">${DOWNLOAD_IMAGE}</a><br><br>`);
 
-    resetButton.insertAdjacentText('beforeend', 'Reset');
+    resetButton.insertAdjacentText('beforeend', 'リセット');
     resetButton.addEventListener('click', (event) => {
       imgButton.addEventListener('click', preGenerateImage);
       imgButton.innerHTML = GENERATE_IMAGE;

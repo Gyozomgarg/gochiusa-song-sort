@@ -571,6 +571,12 @@ Loading Screen
     height: 0%;
   }
 }
+
+
+.lang-select {
+  margin: 10px;
+}
+
 /**
   Mobile Styling
 **/
@@ -612,6 +618,10 @@ Loading Screen
     padding: 15px;
   }
 
+  .mobile.finished.getimg.button {
+    display: none;
+  }
+
   .progress {
     width: 100%;
     text-align: center;
@@ -628,6 +638,12 @@ Loading Screen
     position: inherit;
   }
 
+  .progressfill {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   .options {
       margin: 1em;
       display: grid;
@@ -639,5 +655,9 @@ Loading Screen
 
   .loader {
     left: 45%;
+  }
+
+  .lang-select {
+    margin: 25px;
   }
 } /** End Mobile Media **/
