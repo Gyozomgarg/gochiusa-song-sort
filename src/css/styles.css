@@ -436,6 +436,15 @@ sub {
   transition: background 0.25s linear;
 }
 
+.finished.share {
+  background-color: #FFF9F3;
+  transition: background 0.25s linear;
+}
+.finished.share:hover {
+  background-color: #56848a;
+  transition: background 0.25s linear;
+}
+
 .finished.list {
   background-color: #FFF9F3;
   transition: background 0.25s linear;
@@ -445,14 +454,11 @@ sub {
   transition: background 0.25s linear;
 }
 
-/** Since we use embeds the images break lol **/
 .finished.getimg {
-    /* display: none !important; */
     background-color: #fff9f3;
 }
-
 .finished.getimg:hover {
-  background-color: #56848a;
+  background-color: #AC74CC;
   transition: background 0.25s linear;
 }
 
