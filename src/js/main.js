@@ -84,6 +84,9 @@ function init() {
   document.querySelectorAll('.finished.save.button').forEach(item => {
     item.addEventListener('click', () => saveProgress('Last Result'));
   });
+  document.querySelectorAll('.finished.share.button').forEach(item => {
+    item.addEventListener('click', shareResults);
+  });
   document.querySelectorAll('.finished.getimg.button').forEach(item => {
     item.addEventListener('click', preGenerateImage);
   });
@@ -679,6 +682,31 @@ function generateTextList() {
 function generateSavedata() {
   const saveData = `${timeError?'|':''}${timestamp}|${timeTaken}|${choices}|${optStr}${suboptStr}`;
   return LZString.compressToEncodedURIComponent(saveData);
+}
+
+function shareResults() {
+  const saveDataString = generateSavedata();
+  const saveURL = `${location.protocol}//${sorterURL}?${saveDataString}`;
+  let shareData = {
+    title: 'Gochiusa Music Sorter',
+    text: 'Check out my sorted list of Gochiusa songs:',
+    url: saveURL
+  }
+  if (saveURL.includes("/jp")) {
+    console.log("jp detected")
+    shareData = {
+      title: 'ごちうさ楽曲ソーター',
+      text: 'ごちうさのキャラクターソングの私のソートされたリストをチェックしてください:',
+      url: saveURL
+    }
+  }
+  try {
+    navigator.share(shareData)
+  }
+  catch(err) {
+    console.log(err);
+    alert("An Unexpected Error Occured");
+  }
 }
 
 /** Retrieve latest character data and options from dataset. */
