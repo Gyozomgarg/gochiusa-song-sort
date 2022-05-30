@@ -62,7 +62,7 @@ dataSet[dataSetVersion].options = [
     checked: true,
   },
   {
-    name: "Remove Solo",
+    name: "Remove Solo Versions",
     key: "solo-ver",
     tooltip: "Check this to remove solo versions of group songs.",
     checked: true,
