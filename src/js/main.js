@@ -67,46 +67,44 @@ function setGlobalStage(stage) {
 /** Initialize script. */
 function init() {
   /** Define button behavior. */
-  document.querySelectorAll(".starting.start.button").forEach((item) => {
-    item.addEventListener("click", start);
-  });
-  document.querySelectorAll(".starting.load.button").forEach((item) => {
-    item.addEventListener("click", loadProgress);
-  });
+  document
+    .querySelector(".starting.start.button")
+    .addEventListener("click", start);
+  document
+    .querySelector(".starting.load.button")
+    .addEventListener("click", loadProgress);
 
-  document.querySelectorAll(".left.sort.text").forEach((item) => {
-    item.addEventListener("click", () => pick("left"));
-  });
-  document.querySelectorAll(".right.sort.text").forEach((item) => {
-    item.addEventListener("click", () => pick("right"));
-  });
+  document
+    .querySelector(".left.sort.text")
+    .addEventListener("click", () => pick("left"));
+  document
+    .querySelector(".right.sort.text")
+    .addEventListener("click", () => pick("right"));
 
-  document.querySelectorAll(".sorting.tie.button").forEach((item) => {
-    item.addEventListener("click", () => pick("tie"));
-  });
-  document.querySelectorAll(".sorting.undo.button").forEach((item) => {
-    item.addEventListener("click", undo);
-  });
-  document.querySelectorAll(".sorting.save.button").forEach((item) => {
-    item.addEventListener("click", () => saveProgress("Progress"));
-  });
+  document
+    .querySelector(".sorting.tie.button")
+    .addEventListener("click", () => pick("tie"));
+  document
+    .querySelector(".sorting.undo.button")
+    .addEventListener("click", undo);
+  document
+    .querySelector(".sorting.save.button")
+    .addEventListener("click", () => saveProgress("Progress"));
 
-  document.querySelectorAll(".finished.save.button").forEach((item) => {
-    item.addEventListener("click", () => saveProgress("Last Result"));
-  });
-  document.querySelectorAll(".finished.share.button").forEach((item) => {
-    item.addEventListener("click", shareResults);
-  });
-  document.querySelectorAll(".finished.getimg.button").forEach((item) => {
-    item.addEventListener("click", preGenerateImage);
-  });
-  document.querySelectorAll(".finished.list.button").forEach((item) => {
-    item.addEventListener("click", generateTextList);
-  });
+  document
+    .querySelector(".finished.save.button")
+    .addEventListener("click", () => saveProgress("Last Result"));
+  document
+    .querySelector(".finished.share.button")
+    .addEventListener("click", shareResults);
+  document
+    .querySelector(".finished.getimg.button")
+    .addEventListener("click", preGenerateImage);
+  document
+    .querySelector(".finished.list.button")
+    .addEventListener("click", generateTextList);
 
-  document.querySelectorAll(".clearsave").forEach((item) => {
-    item.addEventListener("click", clearProgress);
-  });
+  document.querySelector(".clearsave").addEventListener("click", clearProgress);
 
   /** Define keyboard controls (up/down/left/right vimlike k/j/h/l). */
   document.addEventListener("keypress", (ev) => {
@@ -371,19 +369,17 @@ function display() {
 
   progressBar(getProgressBarPrompt(battleNo), percent);
 
-  document.querySelectorAll(".left.sort.image").forEach((item) => {
-    item.src = leftChar.img;
-  });
-  document.querySelectorAll(".right.sort.image").forEach((item) => {
-    item.src = rightChar.img;
-  });
+  document.querySelector(".left.sort.image").src = leftChar.img;
+  document.querySelector(".right.sort.image").src = rightChar.img;
 
-  document.querySelectorAll(".left.sort.text").forEach((item) => {
-    item.innerHTML = charNameDisp(leftChar.name, leftChar.opts.character);
-  });
-  document.querySelectorAll(".right.sort.text").forEach((item) => {
-    item.innerHTML = charNameDisp(rightChar.name, rightChar.opts.character);
-  });
+  document.querySelector(".left.sort.text").innerHTML = charNameDisp(
+    leftChar.name,
+    leftChar.opts.character
+  );
+  document.querySelector(".right.sort.text").innerHTML = charNameDisp(
+    rightChar.name,
+    rightChar.opts.character
+  );
 
   /** Autopick if choice has been given. */
   if (choices.length !== battleNo - 1) {
