@@ -705,12 +705,12 @@ function saveProgress(saveType) {
 
   if (saveType !== "Autosave") {
     const saveURL = `${location.protocol}//${sorterURL}?${saveData}`;
+    navigator.clipboard.writeText(saveURL);
 
     window.prompt(
       saveType === "Last Result" ? FINISHED_TEXT : IN_PROGRESS_TEXT,
       saveURL
     );
-    navigator.clipboard.writeText(saveURL);
   }
 }
 
