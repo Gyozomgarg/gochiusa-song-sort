@@ -104,6 +104,14 @@ function init() {
     .querySelector(".finished.list.button")
     .addEventListener("click", generateTextList);
 
+  for (const el of document.querySelectorAll(".sort.image")) {
+    el.querySelector('iframe').addEventListener("load", () => {
+      // TODO(Darkpi): For whatever reason chrome still renders a few frames of
+      // the old iframe content before the new one is rendered :(
+      el.classList.remove('loading');
+    });
+  }
+
   document.querySelector(".clearsave").addEventListener("click", clearProgress);
 
   /** Define keyboard controls (up/down/left/right vimlike k/j/h/l). */
@@ -220,7 +228,6 @@ function init() {
   }
 
   $(".preloader").delay(500).fadeOut("slow");
-  $("#overlayer").delay(500).fadeOut("slow");
 }
 
 /** Begin sorting. */
@@ -367,10 +374,29 @@ function display() {
     return `<p title="${charTooltip}">${charName}<br><sub>${finalArtistNames}</sub></p>`;
   };
 
+  const getCoverImg = (video) => {
+    const YOUTUBE_EMBED_PREFIX = "https://www.youtube.com/embed/";
+    if (!video.startsWith(YOUTUBE_EMBED_PREFIX)) return null;
+    const id = video.substring(YOUTUBE_EMBED_PREFIX.length);
+    return `https://img.youtube.com/vi/${id}/hqdefault.jpg`;
+  }
+
   progressBar(getProgressBarPrompt(battleNo), percent);
 
-  document.querySelector(".left.sort.image").src = leftChar.img;
-  document.querySelector(".right.sort.image").src = rightChar.img;
+  for (const [selector, videoUrl] of [[".left.sort.image", leftChar.img], [".right.sort.image", rightChar.img]] ) {
+    const el = document.querySelector(selector);
+    el.classList.add('loading');
+    el.querySelector('iframe').src = videoUrl;
+
+    const coverImg = getCoverImg(videoUrl);
+
+    if (coverImg == null) {
+      el.querySelector('img').classList.add('hidden');
+    } else {
+      el.querySelector('img').classList.remove('hidden');
+      el.querySelector('img').src = coverImg;
+    }
+  }
 
   document.querySelector(".left.sort.text").innerHTML = charNameDisp(
     leftChar.name,
@@ -583,7 +609,6 @@ function result(imageNum = 3) {
   const imgRes = (char, num) => {
     const charName = reduceTextWidth(char.name, "Arial 12px", 160);
     const charTooltip = char.name !== charName ? char.name : "";
-    //return `<div class="result image"><div class="left"><span>${num}</span></div><div class="right"><img src="${char.img}"><div><span title="${charTooltip}">${charName}</span></div></div></div>`;
     return `<div class="result image"><div class="left"><span>${num}</span></div><div class="right"><iframe class="right sort image" height="160" src="${char.img}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><div><span title="${charTooltip}">${charName}</span></div></div></div>`;
   };
   const res = (char, num) => {

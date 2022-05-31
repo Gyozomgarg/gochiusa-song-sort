@@ -3,6 +3,10 @@ body {
   font-size: 16px;
 }
 
+.hidden {
+  display: none !important;
+}
+
 .container {
   display: flex;
   flex-flow: column nowrap;
@@ -178,11 +182,69 @@ body {
   max-width: -webkit-fill-available;
 }
 
-iframe.left.sort.image,
-iframe.right.sort.image {
+.sort.image {
+  overflow: hidden;
+  position: relative;
+  min-height: 150px;
+}
+
+.sort.image iframe {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.sort.image img {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.5s linear;
+  pointer-events: none;
+}
+
+.sort.image .loader-outer {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.sort.image .loader {
+  display: none;
+}
+
+.sort.image.loading img {
+  transition: none;
+  opacity: 1;
+}
+
+.sort.image.loading .loader {
+  display: block;
+  color: #714939;
+  border-color: #714939;
+}
+
+.sort.image.loading .loader-inner {
+  background-color: #714939;
+}
+
+.sort.image.loading iframe {
+  visibility: hidden;
+  /* display: none; */
 }
 
 .options {
@@ -485,7 +547,7 @@ sub {
 /**
 Loading Screen
 **/
-#overlayer {
+.preloader {
   width: 100%;
   height: 100%;
   position: fixed;
@@ -495,33 +557,31 @@ Loading Screen
   bottom: 0;
   z-index: 2;
   background: #714939;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
 }
+
 .preloader p {
-  position: absolute;
-  top: 60%;
-  width: 100%;
   height: 90px;
   text-align: center;
   color: #fff;
   font-size: 24px;
-  z-index: 3;
+  margin-top: 2em;
 }
+
 .loader {
   display: inline-block;
   width: 30px;
   height: 30px;
-  position: absolute;
-  z-index: 3;
   border: 4px solid #fff;
-  top: 50%;
   animation: loader 2s infinite ease;
-  position: absolute;
-  left: 49%;
   text-align: center;
   color: #fff;
   font-size: 24px;
-  z-index: 3;
 }
+
 .loader-inner {
   vertical-align: top;
   display: inline-block;
@@ -529,6 +589,7 @@ Loading Screen
   background-color: #fff;
   animation: loader-inner 2s infinite ease-in;
 }
+
 @keyframes loader {
   0% {
     transform: rotate(0deg);
@@ -546,6 +607,7 @@ Loading Screen
     transform: rotate(360deg);
   }
 }
+
 @-webkit-keyframes loader {
   0% {
     transform: rotate(0deg);
@@ -563,6 +625,7 @@ Loading Screen
     transform: rotate(360deg);
   }
 }
+
 @keyframes loader-inner {
   0% {
     height: 0%;
@@ -580,6 +643,7 @@ Loading Screen
     height: 0%;
   }
 }
+
 @-webkit-keyframes loader-inner {
   0% {
     height: 0%;
@@ -662,7 +726,7 @@ body.finished .info {
     display: none;
   }
 
-  body.sort .sort.image {
+  body.sorting .sort.image {
     display: block;
   }
 

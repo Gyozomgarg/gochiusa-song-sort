@@ -44,7 +44,6 @@
   <body class="starting">
     <!-- jQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <div id="overlayer"></div>
     <div class="preloader">
       <div class="loader">
         <span class="loader-inner"></span>
@@ -78,26 +77,40 @@
           <span>Loading...</span>
         </div>
 
-        <iframe
-          class="left sort image"
-          width="240"
-          src="https://www.youtube.com/embed/_-oEpcmI9Bo"
-          title="YouTube video player"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-        ></iframe>
+        <div class="left sort image">
+          <div class="loader-outer">
+            <div class="loader">
+              <span class="loader-inner"></span>
+            </div>
+          </div>
+          <iframe
+            width="240"
+            src="https://www.youtube.com/embed/_-oEpcmI9Bo"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+          <img>
+        </div>
         <div class="left sort text"><p></p></div>
 
-        <iframe
-          class="right sort image"
-          width="240"
-          src="https://www.youtube.com/embed/vRMGxzuS0_w"
-          title="YouTube video player"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-        ></iframe>
+        <div class="right sort image">
+          <div class="loader-outer">
+            <div class="loader">
+              <span class="loader-inner"></span>
+            </div>
+          </div>
+          <iframe
+            width="240"
+            src="https://www.youtube.com/embed/vRMGxzuS0_w"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+          <img>
+        </div>
         <div class="right sort text"><p></p></div>
 
         <div class="sorting tie button">Tie</div>
