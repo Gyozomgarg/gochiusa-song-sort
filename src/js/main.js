@@ -173,10 +173,10 @@ function init() {
   /** Initialize image quantity selector for results. */
   for (let i = 0; i <= 10; i++) {
     const select = document.createElement("option");
-    select.value = i;
-    select.text = i;
+    select.value = i.toString();
+    select.text = i.toString();
     if (i === 3) {
-      select.selected = "selected";
+      select.selected = true;
     }
     document
       .querySelector(".image.selector > select")
@@ -972,7 +972,7 @@ function decodeQuery(queryString) {
           document.getElementById(`cb-${opt.key}-${subindex}`).disabled =
             optIsTrue;
         });
-        suboptDecodedIndex = suboptDecodedIndex + optIsTrue ? 1 : 0;
+        suboptDecodedIndex = suboptDecodedIndex + (optIsTrue ? 1 : 0);
       } else {
         document.getElementById(`cb-${opt.key}`).checked =
           optDecoded[index] === "1";
@@ -990,31 +990,32 @@ function decodeQuery(queryString) {
   }
 }
 
-/**
- * Reduces text to a certain rendered width.
- *
- * @param {string} text Text to reduce.
- * @param {string} font Font applied to text. Example "12px Arial".
- * @param {number} width Width of desired width in px.
- */
-function reduceTextWidth(text, font, width) {
-  const canvas =
-    reduceTextWidth.canvas ||
-    (reduceTextWidth.canvas = document.createElement("canvas"));
-  const context = canvas.getContext("2d");
-  context.font = font;
-  if (context.measureText(text).width < width) {
-    return text;
-  } else {
-    let reducedText = text;
-    while (
-      context.measureText(reducedText).width + context.measureText("..").width >
-      width
-    ) {
-      reducedText = reducedText.slice(0, -1);
+const reduceTextWidth = (() => {
+  const canvas = document.createElement("canvas");
+  /**
+   * Reduces text to a certain rendered width.
+   *
+   * @param {string} text Text to reduce.
+   * @param {string} font Font applied to text. Example "12px Arial".
+   * @param {number} width Width of desired width in px.
+   */
+  return (text, font, width) => {
+    const context = canvas.getContext("2d");
+    context.font = font;
+    if (context.measureText(text).width < width) {
+      return text;
+    } else {
+      let reducedText = text;
+      while (
+        context.measureText(reducedText).width +
+          context.measureText("..").width >
+        width
+      ) {
+        reducedText = reducedText.slice(0, -1);
+      }
+      return reducedText + "..";
     }
-    return reducedText + "..";
-  }
-}
+  };
+})();
 
 window.onload = init;
