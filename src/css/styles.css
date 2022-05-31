@@ -57,13 +57,15 @@ body {
   border-radius: 20px;
 }
 
+.starting.button {
+  display: none;
+}
+
 .starting.start.button {
   grid-row: span 6;
 }
 
 .starting.load.button {
-  grid-row: span 3;
-  display: none;
   margin-top: 10px;
 }
 
@@ -73,6 +75,18 @@ body {
   display: none;
   margin-top: 10px;
   user-select: none;
+}
+
+.sorting.tie.button {
+  grid-row-start: 1;
+}
+
+.sorting.undo.button {
+  grid-row-start: 3;
+}
+
+.sorting.save.button {
+  grid-row-start: 5;
 }
 
 .loading.button {
@@ -587,54 +601,80 @@ Loading Screen
 .lang-select {
   margin: 10px;
   text-align: center;
+  display: none;
 }
 
 .disclaimer {
   margin: 10px;
 }
 
-/**
-  Mobile Styling
-**/
-@media only screen and (min-width: 768px) {
-  .sorter.mobile {
-    display: none;
-  }
+body.starting .starting.start.button,
+body.starting .lang-select {
+  display: block;
 }
+
+body.starting.has-save .starting.button {
+  grid-row: span 3;
+  display: block;
+}
+
+body.sorting .progress,
+body.sorting .sorting.button,
+body.sorting .sort.text {
+  display: block;
+}
+
+body.finished .finished.button,
+body.finished .image.selector,
+body.finished .time.taken {
+  display: block;
+}
+
+body.finished .options,
+body.finished .info {
+  display: none;
+}
+
+/**
+ * Mobile Styling
+ *
+ * TODO(Darkpi): This doesn't undo most of the desktop display (like grid) so
+ * the CSS is quite messy, but it looks okay :P
+ */
 @media only screen and (max-width: 767px) {
-  .sorter.mobile {
+  .sorter {
     margin: 0px auto;
     place-content: space-between;
     width: 80%;
     display: block;
   }
-  .sorter.desktop {
-    display: none;
-  }
 
-  img.mobile.home-img {
+  img.home-img {
     height: 250px;
   }
 
-  .mobile.sort.text > p {
+  .sort.text > p {
     top: 0;
     transform: none;
   }
 
-  .mobile.sort.image {
-    /** Should become visible after starting **/
+  .sort.image {
     display: none;
   }
 
-  .mobile.image {
+  body.sort .sort.image {
+    display: block;
+  }
+
+  .sorter > .image {
     margin-top: 10px;
   }
 
-  .mobile.button {
+  .button {
     padding: 15px;
   }
 
-  .mobile.finished.getimg.button {
+  .finished.getimg.button {
     display: none;
   }
 

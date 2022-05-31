@@ -51,6 +51,19 @@ let totalBattles = 0;
 let sorterURL = window.location.host + window.location.pathname;
 let storedSaveType = localStorage.getItem(`${sorterURL}_saveType`);
 
+/**
+ * Set the "stage" of sorting process the page should be on.
+ *
+ * Used for styling purpose.
+ *
+ * @param {'starting'|'sorting'|'finished'} stage
+ */
+function setGlobalStage(stage) {
+  for (const s of ["starting", "sorting", "finished"]) {
+    document.body.classList.toggle(s, stage === s);
+  }
+}
+
 /** Initialize script. */
 function init() {
   /** Define button behavior. */
@@ -192,12 +205,9 @@ function init() {
 
   /** Show load button if save data exists. */
   if (storedSaveType) {
+    document.body.classList.add("has-save");
     document.querySelectorAll(".starting.load.button").forEach((el) => {
       el.innerText = getSaveTypeTranslation(storedSaveType);
-    });
-    document.querySelectorAll(".starting.button").forEach((el) => {
-      el.style["grid-row"] = "span 3";
-      el.style.display = "block";
     });
   }
 
@@ -228,10 +238,9 @@ function start() {
       if (!document.getElementById(`cbgroup-${opt.key}`).checked)
         optTaken.push(false);
       else {
-        const suboptArray = opt.sub.reduce((arr, val, idx) => {
-          arr.push(document.getElementById(`cb-${opt.key}-${idx}`).checked);
-          return arr;
-        }, []);
+        const suboptArray = opt.sub.map((val, idx) => {
+          return document.getElementById(`cb-${opt.key}-${idx}`).checked;
+        });
         optTaken.push(suboptArray);
       }
     } else {
@@ -336,26 +345,10 @@ function start() {
   rightInnerIndex = 0; // to the right array, in order to merge them into one sorted array.
 
   /** Disable all checkboxes and hide/show appropriate parts while we preload the images. */
+  setGlobalStage("sorting");
   document
     .querySelectorAll("input[type=checkbox]")
     .forEach((cb) => (cb.disabled = true));
-  document
-    .querySelectorAll(".starting.button")
-    .forEach((el) => (el.style.display = "none"));
-  document
-    .querySelectorAll(".lang-select")
-    .forEach((el) => (el.style.display = "none"));
-  document.querySelector(".progress").style.display = "block";
-
-  document
-    .querySelectorAll(".sorting.button")
-    .forEach((el) => (el.style.display = "block"));
-  document
-    .querySelectorAll(".sort.text")
-    .forEach((el) => (el.style.display = "block"));
-  document
-    .querySelectorAll(".mobile.sort.image")
-    .forEach((el) => (el.style.display = "block"));
   display();
 }
 
@@ -584,23 +577,7 @@ function progressBar(indicator, percentage) {
  * @param {number} [imageNum=3] Number of images to display. Defaults to 3.
  */
 function result(imageNum = 3) {
-  document
-    .querySelectorAll(".finished.button")
-    .forEach((el) => (el.style.display = "block"));
-  document.querySelector(".image.selector").style.display = "block";
-  document.querySelector(".time.taken").style.display = "block";
-
-  document
-    .querySelectorAll(".sorting.button")
-    .forEach((el) => (el.style.display = "none"));
-  document
-    .querySelectorAll(".sort.text")
-    .forEach((el) => (el.style.display = "none"));
-  document
-    .querySelectorAll(".mobile.sort.image")
-    .forEach((el) => (el.style.display = "none"));
-  document.querySelector(".options").style.display = "none";
-  document.querySelector(".info").style.display = "none";
+  setGlobalStage("finished");
 
   const header = `<div class="result head"><div class="left">${ORDER}</div><div class="right">${NAME}</div></div>`;
   const timeStr = `${getSortCompletedMessage(
@@ -629,6 +606,8 @@ function result(imageNum = 3) {
 
   resultTable.innerHTML = header;
   timeElem.innerHTML = timeStr;
+
+  finalCharacters = [];
 
   characterDataToSort.forEach((val, idx) => {
     const characterIndex = finalSortedIndexes[idx];
@@ -717,12 +696,7 @@ function clearProgress() {
   localStorage.removeItem(`${sorterURL}_saveData`);
   localStorage.removeItem(`${sorterURL}_saveType`);
 
-  document
-    .querySelectorAll(".starting.start.button")
-    .forEach((el) => (el.style["grid-row"] = "span 6"));
-  document
-    .querySelectorAll(".starting.load.button")
-    .forEach((el) => (el.style.display = "none"));
+  document.body.classList.remove("has-save");
 }
 
 function preGenerateImage() {
@@ -770,10 +744,11 @@ function generateImage() {
 }
 
 function generateTextList() {
-  const data = finalCharacters.reduce((str, char) => {
-    str += `${char.rank}. ${char.name}<br>`;
-    return str;
-  }, "");
+  const data = finalCharacters
+    .map((char) => {
+      return `${char.rank}. ${char.name}<br>`;
+    })
+    .join("");
   const oWindow = window.open("", "", "height=640,width=480");
   oWindow.document.write(data);
 }
