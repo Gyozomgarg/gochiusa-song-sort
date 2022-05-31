@@ -82,3 +82,5 @@ formatCharacterNames = (characters) => {
 };
 
 RESET_BUTTON = "リセット";
+SHARE_TITLE = "ごちうさ楽曲ソーター";
+SHARE_TEXT = "私のごちうさ楽曲ランキングをチェックしてください:";

@@ -798,18 +798,10 @@ function shareResults() {
   const saveDataString = generateSavedata();
   const saveURL = `${location.protocol}//${sorterURL}#${saveDataString}`;
   let shareData = {
-    title: "Gochiusa Music Sorter",
-    text: "Check out my sorted list of Gochiusa songs:",
+    title: SHARE_TITLE,
+    text: SHARE_TEXT,
     url: saveURL,
   };
-  if (saveURL.includes("/jp")) {
-    console.log("jp detected");
-    shareData = {
-      title: "ごちうさ楽曲ソーター",
-      text: "ごちうさのキャラクターソングの私のソートされたリストをチェックしてください:",
-      url: saveURL,
-    };
-  }
   try {
     navigator.share(shareData);
   } catch (err) {

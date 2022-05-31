@@ -60,3 +60,5 @@ formatCharacterNames = (characters) => {
 };
 
 RESET_BUTTON = "Reset";
+SHARE_TITLE = "Gochiusa Music Sorter";
+SHARE_TEXT = "Check out my sorted list of Gochiusa songs:";
