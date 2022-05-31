@@ -20,7 +20,6 @@ let timeError = false; // Shifts entire savedata array to the right by 1 and add
 let sortedIndexList = [];
 let recordDataList = [];
 let parentIndexList = [];
-let tiedDataList = [];
 
 let leftIndex = 0;
 let leftInnerIndex = 0;
@@ -34,7 +33,6 @@ let pointer = 0;
 let sortedIndexListPrev = [];
 let recordDataListPrev = [];
 let parentIndexListPrev = [];
-let tiedDataListPrev = [];
 
 let leftIndexPrev = 0;
 let leftInnerIndexPrev = 0;
@@ -318,8 +316,7 @@ function start() {
    * the mergesort process.
    */
 
-  recordDataList = characterDataToSort.map(() => 0);
-  tiedDataList = characterDataToSort.map(() => -1);
+  recordDataList = characterDataToSort.map(() => []);
 
   /**
    * Put a list of indexes that we'll be sorting into sortedIndexList. These will refer back
@@ -332,7 +329,7 @@ function start() {
    * for the first element, which has no parent.
    */
 
-  sortedIndexList[0] = characterDataToSort.map((val, idx) => idx);
+  sortedIndexList[0] = characterDataToSort.map((val, idx) => [idx]);
   parentIndexList[0] = -1;
 
   let midpoint = 0; // Indicates where to split the array.
@@ -369,13 +366,18 @@ function start() {
   display();
 }
 
+function randElement(xs) {
+  Math.seedrandom(`${timestamp}-${xs.join(',')}`);
+  return xs[Math.floor(Math.random() * xs.length)];
+}
+
 /** Displays the current state of the sorter. */
 function display() {
   const percent = Math.floor((sortedNo * 100) / totalBattles);
-  const leftCharIndex = sortedIndexList[leftIndex][leftInnerIndex];
-  const rightCharIndex = sortedIndexList[rightIndex][rightInnerIndex];
-  const leftChar = characterDataToSort[leftCharIndex];
-  const rightChar = characterDataToSort[rightCharIndex];
+  const leftCharIndexes = sortedIndexList[leftIndex][leftInnerIndex];
+  const rightCharIndexes = sortedIndexList[rightIndex][rightInnerIndex];
+  const leftChar = characterDataToSort[randElement(leftCharIndexes)];
+  const rightChar = characterDataToSort[randElement(rightCharIndexes)];
 
   const charNameDisp = (name, characters) => {
     const charName = reduceTextWidth(name, "Arial 12.8px", 220);
@@ -457,7 +459,6 @@ function pick(sortType) {
   sortedIndexListPrev = sortedIndexList.slice(0);
   recordDataListPrev = recordDataList.slice(0);
   parentIndexListPrev = parentIndexList.slice(0);
-  tiedDataListPrev = tiedDataList.slice(0);
 
   leftIndexPrev = leftIndex;
   leftInnerIndexPrev = leftInnerIndex;
@@ -480,9 +481,6 @@ function pick(sortType) {
         choices += "0";
       }
       recordData("left");
-      while (tiedDataList[recordDataList[pointer - 1]] != -1) {
-        recordData("left");
-      }
       break;
     }
     case "right": {
@@ -490,33 +488,19 @@ function pick(sortType) {
         choices += "1";
       }
       recordData("right");
-      while (tiedDataList[recordDataList[pointer - 1]] != -1) {
-        recordData("right");
-      }
       break;
     }
 
     /**
      * For picking 'tie' (i.e. heretics):
      *
-     * Proceed as if we picked the 'left' character. Then, we record the right character's
-     * index value into the list of ties (at the left character's index) and then proceed
-     * as if we picked the 'right' character.
+     * Merge the two "set" as equivalent.
      */
     case "tie": {
       if (choices.length === battleNo - 1) {
         choices += "2";
       }
-      recordData("left");
-      while (tiedDataList[recordDataList[pointer - 1]] != -1) {
-        recordData("left");
-      }
-      tiedDataList[recordDataList[pointer - 1]] =
-        sortedIndexList[rightIndex][rightInnerIndex];
-      recordData("right");
-      while (tiedDataList[recordDataList[pointer - 1]] != -1) {
-        recordData("right");
-      }
+      recordData("tie");
       break;
     }
     default:
@@ -547,9 +531,10 @@ function pick(sortType) {
    * (unsorted) parent with a sorted version. Purge the record afterwards.
    */
   if (leftInnerIndex === leftListLen && rightInnerIndex === rightListLen) {
-    for (let i = 0; i < leftListLen + rightListLen; i++) {
+    for (let i = 0; i < pointer; i++) {
       sortedIndexList[parentIndexList[leftIndex]][i] = recordDataList[i];
     }
+    sortedIndexList[parentIndexList[leftIndex]].length = pointer;
     sortedIndexList.pop();
     sortedIndexList.pop();
     leftIndex = leftIndex - 2;
@@ -557,7 +542,6 @@ function pick(sortType) {
     leftInnerIndex = 0;
     rightInnerIndex = 0;
 
-    sortedIndexList.forEach((val, idx) => (recordDataList[idx] = 0));
     pointer = 0;
   }
 
@@ -581,14 +565,18 @@ function pick(sortType) {
 /**
  * Records data in recordDataList.
  *
- * @param {'left'|'right'} sortType Record from the left or the right character array.
+ * @param {'left'|'right'|'tie'} sortType Record from the left or the right character array.
  */
 function recordData(sortType) {
   if (sortType === "left") {
     recordDataList[pointer] = sortedIndexList[leftIndex][leftInnerIndex];
     leftInnerIndex++;
-  } else {
+  } else if (sortType === 'right') {
     recordDataList[pointer] = sortedIndexList[rightIndex][rightInnerIndex];
+    rightInnerIndex++;
+  } else {
+    recordDataList[pointer] = [...sortedIndexList[leftIndex][leftInnerIndex], ...sortedIndexList[rightIndex][rightInnerIndex]];
+    leftInnerIndex++;
     rightInnerIndex++;
   }
 
@@ -645,25 +633,18 @@ function result(imageNum = 3) {
 
   finalCharacters = [];
 
-  characterDataToSort.forEach((val, idx) => {
-    const characterIndex = finalSortedIndexes[idx];
-    const character = characterDataToSort[characterIndex];
-    if (imageDisplay-- > 0) {
-      resultTable.insertAdjacentHTML("beforeend", imgRes(character, rankNum));
-    } else {
-      resultTable.insertAdjacentHTML("beforeend", res(character, rankNum));
-    }
-    finalCharacters.push({ rank: rankNum, name: character.name });
-
-    if (idx < characterDataToSort.length - 1) {
-      if (tiedDataList[characterIndex] === finalSortedIndexes[idx + 1]) {
-        tiedRankNum++; // Indicates how many people are tied at the same rank.
+  for (const characterIndexes of finalSortedIndexes) {
+    for (const characterIndex of characterIndexes) {
+      const character = characterDataToSort[characterIndex];
+      if (imageDisplay-- > 0) {
+        resultTable.insertAdjacentHTML("beforeend", imgRes(character, rankNum));
       } else {
-        rankNum += tiedRankNum; // Add it to the actual ranking, then reset it.
-        tiedRankNum = 1; // The default value is 1, so it increments as normal if no ties.
+        resultTable.insertAdjacentHTML("beforeend", res(character, rankNum));
       }
+      finalCharacters.push({ rank: rankNum, name: character.name });
     }
-  });
+    rankNum += characterIndexes.length;
+  }
 }
 
 /** Undo previous choice. */
@@ -680,7 +661,6 @@ function undo() {
   sortedIndexList = sortedIndexListPrev.slice(0);
   recordDataList = recordDataListPrev.slice(0);
   parentIndexList = parentIndexListPrev.slice(0);
-  tiedDataList = tiedDataListPrev.slice(0);
 
   leftIndex = leftIndexPrev;
   leftInnerIndex = leftInnerIndexPrev;
