@@ -131,7 +131,7 @@ function init() {
           break;
       }
     } else if (timeTaken && choices.length === battleNo - 1) {
-    /** If sorting has ended. */
+      /** If sorting has ended. */
       switch (ev.key) {
         case "k":
         case "1":
@@ -203,8 +203,13 @@ function init() {
 
   setLatestDataset();
 
-  /** Decode query string if available. */
-  if (window.location.search.slice(1) !== "") decodeQuery();
+  if (window.location.hash.slice(1) !== "") {
+    /** Decode hash string if available first. */
+    decodeQuery(window.location.hash.slice(1));
+  } else if (window.location.search.slice(1) !== "") {
+    /** Decode query string if available, leave here for backward compatibility. */
+    decodeQuery(window.location.search.slice(1));
+  }
 
   $(".preloader").delay(500).fadeOut("slow");
   $("#overlayer").delay(500).fadeOut("slow");
@@ -682,7 +687,7 @@ function saveProgress(saveType) {
   localStorage.setItem(`${sorterURL}_saveType`, saveType);
 
   if (saveType !== "Autosave") {
-    const saveURL = `${location.protocol}//${sorterURL}?${saveData}`;
+    const saveURL = `${location.protocol}//${sorterURL}#${saveData}`;
     if (navigator.clipboard != null) {
       navigator.clipboard.writeText(saveURL);
     }
@@ -775,12 +780,12 @@ function generateTextList() {
 
 function generateSavedata() {
   /** Convert boolean array form to string form. */
-  const optStr = optTaken.map((val) => val ? "1" : "0").join("")
+  const optStr = optTaken.map((val) => (val ? "1" : "0")).join("");
   let suboptStr = "";
 
   for (const val of optTaken) {
     if (Array.isArray(val)) {
-      suboptStr += `|${val.map((x) => x ? "1" : "0").join("")}`;
+      suboptStr += `|${val.map((x) => (x ? "1" : "0")).join("")}`;
     }
   }
 
@@ -792,7 +797,7 @@ function generateSavedata() {
 
 function shareResults() {
   const saveDataString = generateSavedata();
-  const saveURL = `${location.protocol}//${sorterURL}?${saveDataString}`;
+  const saveURL = `${location.protocol}//${sorterURL}#${saveDataString}`;
   let shareData = {
     title: "Gochiusa Music Sorter",
     text: "Check out my sorted list of Gochiusa songs:",
@@ -902,7 +907,7 @@ function populateOptions() {
  * Decodes compressed shareable link query string.
  * @param {string} queryString
  */
-function decodeQuery(queryString = window.location.search.slice(1)) {
+function decodeQuery(queryString) {
   let successfulLoad;
 
   try {
