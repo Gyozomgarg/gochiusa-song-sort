@@ -631,6 +631,9 @@ function undo() {
   if (timeTaken) {
     return;
   }
+  if (choices.length === 0) {
+    return;
+  }
 
   choices = battleNo === battleNoPrev ? choices : choices.slice(0, -1);
 
