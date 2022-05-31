@@ -188,6 +188,13 @@ body {
   min-height: 150px;
 }
 
+/* This is used for the result screen one */
+iframe.sort.image {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
 .sort.image iframe {
   background-size: contain;
   background-repeat: no-repeat;
@@ -690,7 +697,8 @@ body.sorting .sort.text {
 
 body.finished .finished.button,
 body.finished .image.selector,
-body.finished .time.taken {
+body.finished .time.taken,
+body.finished .result .sort.image {
   display: block;
 }
 

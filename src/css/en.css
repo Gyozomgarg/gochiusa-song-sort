@@ -1,4 +1,4 @@
-.left.sort.image iframe,
-.right.sort.image iframe {
+.sort.image iframe,
+iframe.sort.image {
   background-image: url("https://sort.chimame.cafe/src/assets/not-available.jpg");
 }
