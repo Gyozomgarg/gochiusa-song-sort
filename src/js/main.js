@@ -774,7 +774,7 @@ function generateImage() {
       `<a href="${dataURL}" download="${filename}">${DOWNLOAD_IMAGE}</a><br><br>`
     );
 
-    resetButton.insertAdjacentText("beforeend", "リセット");
+    resetButton.insertAdjacentText("beforeend", RESET_BUTTON);
     resetButton.addEventListener("click", (event) => {
       imgButton.addEventListener("click", preGenerateImage);
       imgButton.innerHTML = GENERATE_IMAGE;

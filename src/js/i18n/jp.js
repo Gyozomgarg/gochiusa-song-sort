@@ -80,3 +80,5 @@ mapCharacterName = (s) => {
 formatCharacterNames = (characters) => {
   return characters.map((c) => mapCharacterName(c)).join("、");
 };
+
+RESET_BUTTON = "リセット";
