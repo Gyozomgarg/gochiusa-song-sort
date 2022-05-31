@@ -1,120 +1,212 @@
 <html>
+  <head>
+    <link
+      rel="shortcut icon"
+      href="src/assets/favicon.ico"
+      type="image/x-icon"
+    />
+    <link rel="icon" href="src/assets/favicon.ico" type="image/x-icon" />
+    <meta charset="utf-8" />
+    <meta name="og:site_name" content="Gochiusa Music Sorting" />
+    <meta
+      property="og:description"
+      content="Sort most of the Gochiusa character songs."
+    />
+    <meta
+      name="og:image"
+      content="https://sort.chimame.cafe/src/assets/gochiusa-headphones-thumbnail.jpg"
+    />
+    <meta name="theme-color" content="#f8b5be" />
+    <meta property="og:type" content="website" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <title>Gochiusa Music Sorter</title>
 
-<head>
-  <link rel="shortcut icon" href="src/assets/favicon.ico" type="image/x-icon">
-  <link rel="icon" href="src/assets/favicon.ico" type="image/x-icon">
-  <meta charset="utf-8">
-  <meta name="og:site_name" content="Gochiusa Music Sorting">
-  <meta property="og:description" content="Sort most of the Gochiusa character songs." />
-  <meta name="og:image" content="https://sort.chimame.cafe/src/assets/gochiusa-headphones-thumbnail.jpg">
-  <meta name="theme-color" content="#f8b5be">
-  <meta property="og:type" content="website" />
-  <meta content="width=device-width, initial-scale=1" name="viewport" />
-  <title>Gochiusa Music Sorter</title>
+    <link rel="stylesheet" type="text/css" href="src/css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="src/css/styles.css" />
+    <link rel="stylesheet" type="text/css" href="src/css/en.css" />
 
-  <link rel="stylesheet" type="text/css" href="src/css/reset.css">
-  <link rel="stylesheet" type="text/css" href="src/css/styles.css">
-  <link rel="stylesheet" type="text/css" href="src/css/en.css">
+    <script src="src/js/data.js"></script>
+    <script src="src/js/data/2022-05-21.js"></script>
+    <script src="src/js/data/en/2022-05-24.js"></script>
 
-  <script src="src/js/data.js"></script>
-  <script src="src/js/data/2022-05-21.js"></script>
-  <script src="src/js/data/en/2022-05-24.js"></script>
+    <script src="src/js/html2canvas.min.js"></script>
+    <script src="src/js/lz-string.min.js"></script>
+    <script src="src/js/seedrandom.min.js"></script>
+    <script src="src/js/i18n/en.js"></script>
+    <script src="src/js/main.js"></script>
 
-  <script src="src/js/html2canvas.min.js"></script>
-  <script src="src/js/lz-string.min.js"></script>
-  <script src="src/js/seedrandom.min.js"></script>
-  <script src="src/js/i18n/en.js"></script>
-  <script src="src/js/main.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-</head>
-
-<body>
-<!-- jQuery -->
-<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-<div id="overlayer"></div>
-<div class="preloader">
-   <div class="loader">
-      <span class="loader-inner"></span>
-   </div>
-   <p class="loading-message"> Loading Please Wait...</p>
-</div>
-<div class="container">
-    <div class="progress">
+  <body>
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <div id="overlayer"></div>
+    <div class="preloader">
+      <div class="loader">
+        <span class="loader-inner"></span>
+      </div>
+      <p class="loading-message">Loading Please Wait...</p>
+    </div>
+    <div class="container">
+      <div class="progress">
         <span class="progressbattle"></span>
         <div class="progressbar">
-            <div class="progressfill"><span class="progresstext"></span></div>
+          <div class="progressfill"><span class="progresstext"></span></div>
         </div>
-    </div>
-    <div class="lang-select"><a href="/">English</a> • <a href="/jp">日本語 (BETA)</a></div>
-    <div class="sorter desktop">
+      </div>
+      <div class="lang-select">
+        <a href="/">English</a> • <a href="/jp">日本語 (BETA)</a>
+      </div>
+      <div class="sorter desktop">
         <!-- <img src="src/assets/homeLeft.png" class="left sort image"> -->
-        <iframe class="left sort image" width="240" src="https://www.youtube.com/embed/_-oEpcmI9Bo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        <div class="starting start button"><img class="home-img" style="max-width: -webkit-fill-available;" src="src/assets/gochiusa-headphones.jpg"><h3>Gochiusa Music Sorter</h3><h2>Click Here to Start!</h2></div>
+        <iframe
+          class="left sort image"
+          width="240"
+          src="https://www.youtube.com/embed/_-oEpcmI9Bo"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+        <div class="starting start button">
+          <img
+            class="home-img"
+            style="max-width: -webkit-fill-available"
+            src="src/assets/gochiusa-headphones.jpg"
+          />
+          <h3>Gochiusa Music Sorter</h3>
+          <h2>Click Here to Start!</h2>
+        </div>
         <div class="starting load button">Load</div>
 
-        <div class="loading button"><div></div><span>Loading...</span></div>
+        <div class="loading button">
+          <div></div>
+          <span>Loading...</span>
+        </div>
 
         <div class="sorting tie button">Tie</div>
         <div class="sorting undo button">Undo</div>
         <div class="sorting save button">Save Progress</div>
 
         <div class="finished save button">Generate Result URL</div>
-        <div class="finished share button">Share Results <i class="fa fa-twitter" aria-hidden="true"></i> <i class="fa fa-facebook" aria-hidden="true"></i> <i class="fa fa-share-alt" aria-hidden="true"></i></div>
+        <div class="finished share button">
+          Share Results <i class="fa fa-twitter" aria-hidden="true"></i>
+          <i class="fa fa-facebook" aria-hidden="true"></i>
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </div>
         <div class="finished getimg button">Generate Image</div>
         <div class="finished list button">Generate Text List</div>
 
         <!-- <img src="src/assets/homeRight.png" class="right sort image"> -->
-        <iframe class="right sort image" width="240" src="https://www.youtube.com/embed/vRMGxzuS0_w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe
+          class="right sort image"
+          width="240"
+          src="https://www.youtube.com/embed/vRMGxzuS0_w"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
 
         <div class="left sort text"><p></p></div>
         <div class="right sort text"><p></p></div>
-    </div>
+      </div>
 
-    <div class="sorter mobile">
-      <div class="mobile starting start button"><img class="mobile home-img" style="max-width: -webkit-fill-available;" src="src/assets/gochiusa-headphones.jpg"><h3>Gochiusa Music Sorter</h3><h2>Click Here to Start!</h2></div>
-      <div class="mobile starting load button">Load</div>
-      <div class="mobile loading button"><div></div><span>Loading...</span></div>
+      <div class="sorter mobile">
+        <div class="mobile starting start button">
+          <img
+            class="mobile home-img"
+            style="max-width: -webkit-fill-available"
+            src="src/assets/gochiusa-headphones.jpg"
+          />
+          <h3>Gochiusa Music Sorter</h3>
+          <h2>Click Here to Start!</h2>
+        </div>
+        <div class="mobile starting load button">Load</div>
+        <div class="mobile loading button">
+          <div></div>
+          <span>Loading...</span>
+        </div>
 
-      <iframe class="mobile left sort image" width="240" src="https://www.youtube.com/embed/_-oEpcmI9Bo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      <div class="mobile left sort text"><p></p></div>
+        <iframe
+          class="mobile left sort image"
+          width="240"
+          src="https://www.youtube.com/embed/_-oEpcmI9Bo"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+        <div class="mobile left sort text"><p></p></div>
 
-      <iframe class="mobile right sort image" width="240" src="https://www.youtube.com/embed/vRMGxzuS0_w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      <div class="mobile right sort text"><p></p></div>
+        <iframe
+          class="mobile right sort image"
+          width="240"
+          src="https://www.youtube.com/embed/vRMGxzuS0_w"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+        <div class="mobile right sort text"><p></p></div>
 
-      <div class="mobile sorting tie button">Tie</div>
-      <div class="mobile sorting undo button">Undo</div>
-      <div class="mobile sorting save button">Save Progress</div>
+        <div class="mobile sorting tie button">Tie</div>
+        <div class="mobile sorting undo button">Undo</div>
+        <div class="mobile sorting save button">Save Progress</div>
 
-      <div class="mobile finished save button">Generate Result URL</div>
-      <div class="mobile finished share button">シェア結果 <i class="fa fa-twitter" aria-hidden="true"></i> <i class="fa fa-facebook" aria-hidden="true"></i> <i class="fa fa-share-alt" aria-hidden="true"></i></div>
-      <div class="mobile finished getimg button">Generate Image</div>
-      <div class="mobile finished list button">Generate Text List</div>
+        <div class="mobile finished save button">Generate Result URL</div>
+        <div class="mobile finished share button">
+          シェア結果 <i class="fa fa-twitter" aria-hidden="true"></i>
+          <i class="fa fa-facebook" aria-hidden="true"></i>
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </div>
+        <div class="mobile finished getimg button">Generate Image</div>
+        <div class="mobile finished list button">Generate Text List</div>
+      </div>
 
-    </div>
+      <div class="options"></div>
+      <div class="image selector">Display Embeds on Result:</div>
+      <div class="time taken"></div>
+      <div class="results"></div>
 
+      <div class="info">
+        <a href="https://github.com/execfera/charasort/"
+          >Original Source Code</a
+        >
+        | <a class="clearsave">Clear Save Data</a>
+        <p>
+          Gochiusa Song Sorter by: Nathan
+          <a href="https://twitter.com/Gyozomgarg">(@Gyozomgarg)</a> & Darkpi
+          <a href="https://twitter.com/Darkpiiii">(@Darkpiiii)</a>
+        </p>
+        <br /><br />
 
-    <div class="options"></div>
-    <div class="image selector">Display Embeds on Result: </div>
-    <div class="time taken"></div>
-    <div class="results"></div>
+        <p>
+          Sorter for Gochiusa Character Songs. Pick your sources, and hit the
+          Start button.
+        </p>
+        <p>
+          Click on the song you like better from the two, or tie them if you
+          like them equally or don't know them.
+        </p>
+        <p>
+          There are <strong>over 160+ songs</strong> (or 260+ if including all
+          cover/rearrange/solo version). Doing a complete sort may take a while
+          so make sure to save your progress.
+        </p>
 
-    <div class="info">
-        <a href="https://github.com/execfera/charasort/">Original Source Code</a> | <a class="clearsave">Clear Save Data</a>
-        <p> Gochiusa Song Sorter by: Nathan <a href="https://twitter.com/Gyozomgarg">(@Gyozomgarg)</a> & Darkpi <a href="https://twitter.com/Darkpiiii">(@Darkpiiii)</a> </p>
-        <br><br>
+        <br /><br />
 
-        <p>Sorter for Gochiusa Character Songs. Pick your sources, and hit the Start button.</p>
-        <p>Click on the song you like better from the two, or tie them if you like them equally or don't know them.</p>
-        <p>There are <strong>over 160+ songs</strong> (or 260+ if including all cover/rearrange/solo version). Doing a complete sort may take a while so make sure to save your progress.</p>
-
-        <br><br>
-
-        <p>Keyboard controls during sorting: H/LeftArrow (pick left) J/DownArrow (undo) K/UpArrow (tie) L/RightArrow (pick right) S (save progress).</p>
+        <p>
+          Keyboard controls during sorting: H/LeftArrow (pick left) J/DownArrow
+          (undo) K/UpArrow (tie) L/RightArrow (pick right) S (save progress).
+        </p>
         <p>Before sorting: S/Enter (start sorting) L (load progress).</p>
-
+      </div>
     </div>
-</div>
-</body>
-
+  </body>
 </html>

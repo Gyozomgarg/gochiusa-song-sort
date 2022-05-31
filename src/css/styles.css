@@ -41,15 +41,15 @@ body {
 }
 
 .sorter {
-    margin: 0px auto;
-    display: grid;
-    grid-template-columns: 31% 34.5% 31%;
-    place-content: space-between;
-    width: 80%;
+  margin: 0px auto;
+  display: grid;
+  grid-template-columns: 31% 34.5% 31%;
+  place-content: space-between;
+  width: 80%;
 }
 
 .button {
-  border: 3px solid #734A3A;
+  border: 3px solid #734a3a;
   text-align: center;
   padding: 10%;
   grid-column: 2 / 3;
@@ -67,7 +67,8 @@ body {
   margin-top: 10px;
 }
 
-.sorting.button, .finished.button {
+.sorting.button,
+.finished.button {
   grid-row: span 2;
   display: none;
   margin-top: 10px;
@@ -86,8 +87,8 @@ body {
   background-color: #333;
 
   border-radius: 100%;
-  -webkit-animation: sk-scaleout 1.0s infinite ease-in-out;
-  animation: sk-scaleout 1.0s infinite ease-in-out;
+  -webkit-animation: sk-scaleout 1s infinite ease-in-out;
+  animation: sk-scaleout 1s infinite ease-in-out;
 }
 
 /* Animation taken from: http://tobiasahlin.com/spinkit/ */
@@ -98,9 +99,11 @@ body {
 }
 
 @-webkit-keyframes sk-scaleout {
-  0% { -webkit-transform: scale(0) }
+  0% {
+    -webkit-transform: scale(0);
+  }
   100% {
-    -webkit-transform: scale(1.0);
+    -webkit-transform: scale(1);
     opacity: 0;
   }
 }
@@ -109,15 +112,16 @@ body {
   0% {
     -webkit-transform: scale(0);
     transform: scale(0);
-  } 100% {
-    -webkit-transform: scale(1.0);
-    transform: scale(1.0);
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
     opacity: 0;
   }
 }
 
 .button {
-  user-select:　none;
+  user-select: none;
 }
 
 .sorter > .image {
@@ -131,7 +135,7 @@ body {
 .sorter > .text {
   display: none;
   cursor: pointer;
-  user-select:　none;
+  user-select: none;
   margin-top: 10px;
 }
 
@@ -148,14 +152,14 @@ body {
 
 .sorter > .left {
   grid-column: 1 / 2;
-  border: 3px solid #734A3A;
+  border: 3px solid #734a3a;
   border-radius: 20px;
   max-width: -webkit-fill-available;
 }
 
 .sorter > .right {
   grid-column: 3 / 4;
-  border: 3px solid #734A3A;
+  border: 3px solid #734a3a;
   border-radius: 20px;
   max-width: -webkit-fill-available;
 }
@@ -188,7 +192,8 @@ label:hover {
   color: #990000;
 }
 
-.options > .large.option, .options > hr {
+.options > .large.option,
+.options > hr {
   grid-column: span 3;
   text-align: center;
   width: 100%;
@@ -255,7 +260,7 @@ label:hover {
 
 .result.head {
   background-color: #000;
-  color: #FFF;
+  color: #fff;
 }
 
 .result > .left {
@@ -301,36 +306,36 @@ a {
 }
 
 a:hover {
-  color: #FF6600;
+  color: #ff6600;
 }
 
 a:visited {
-  color: #6600FF;
+  color: #6600ff;
 }
 
 h2 {
-    display: block;
-    font-size: 1.5em;
-    margin-top: 0.83em;
-    margin-bottom: 0.83em;
-    margin-left: 0;
-    margin-right: 0;
-    font-weight: bold;
-    user-select: none;
+  display: block;
+  font-size: 1.5em;
+  margin-top: 0.83em;
+  margin-bottom: 0.83em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
+  user-select: none;
 }
 h3 {
-    display: block;
-    font-size: 1.17em;
-    margin-top: 1em;
-    margin-bottom: 1em;
-    margin-left: 0;
-    margin-right: 0;
-    font-weight: bold;
-    user-select: none;
+  display: block;
+  font-size: 1.17em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
+  user-select: none;
 }
 
 strong {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 sub {
@@ -343,27 +348,28 @@ sub {
   user-select: none;
 }
 
-.container:before, .container:after {
-    position: fixed;
-    z-index: -1;
-    top: 0;
-    bottom: 0;
-    width: 12%;
-    max-width: 160px;
-    background: url(../assets/deco_side.svg) top / 100% auto;
-    content: "";
+.container:before,
+.container:after {
+  position: fixed;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  width: 12%;
+  max-width: 160px;
+  background: url(../assets/deco_side.svg) top / 100% auto;
+  content: "";
 }
 .container:before {
-    left: 0;
-    transform: scaleX(-1);
+  left: 0;
+  transform: scaleX(-1);
 }
 .container:after {
-    right: 0;
+  right: 0;
 }
 
 /** Hover Effects for options **/
 .starting.start {
-  background-color: #FFF9F3;
+  background-color: #fff9f3;
   transition: background 0.25s linear;
 }
 .starting.start:hover {
@@ -372,7 +378,7 @@ sub {
 }
 
 .starting.load {
-  background-color: #FFF9F3;
+  background-color: #fff9f3;
   transition: background 0.25s linear;
   user-select: none;
 }
@@ -381,7 +387,7 @@ sub {
   transition: background 0.25s linear;
 }
 .left.sort.text {
-  background-color: #FFF9F3;
+  background-color: #fff9f3;
   transition: background 0.25s linear;
   user-select: none;
 }
@@ -391,7 +397,7 @@ sub {
 }
 
 .right.sort.text {
-  background-color: #FFF9F3;
+  background-color: #fff9f3;
   transition: background 0.25s linear;
   user-select: none;
 }
@@ -401,7 +407,7 @@ sub {
 }
 
 .sorting.tie {
-  background-color: #FFF9F3;
+  background-color: #fff9f3;
   transition: background 0.25s linear;
 }
 .sorting.tie:hover {
@@ -410,7 +416,7 @@ sub {
 }
 
 .sorting.undo {
-  background-color: #FFF9F3;
+  background-color: #fff9f3;
   transition: background 0.25s linear;
 }
 .sorting.undo:hover {
@@ -419,7 +425,7 @@ sub {
 }
 
 .sorting.save {
-  background-color: #FFF9F3;
+  background-color: #fff9f3;
   transition: background 0.25s linear;
 }
 .sorting.save:hover {
@@ -428,16 +434,16 @@ sub {
 }
 
 .finished.save {
-  background-color: #FFF9F3;
+  background-color: #fff9f3;
   transition: background 0.25s linear;
 }
 .finished.save:hover {
-  background-color: #515AA2;
+  background-color: #515aa2;
   transition: background 0.25s linear;
 }
 
 .finished.share {
-  background-color: #FFF9F3;
+  background-color: #fff9f3;
   transition: background 0.25s linear;
 }
 .finished.share:hover {
@@ -446,19 +452,19 @@ sub {
 }
 
 .finished.list {
-  background-color: #FFF9F3;
+  background-color: #fff9f3;
   transition: background 0.25s linear;
 }
 .finished.list:hover {
-  background-color: #DCEBA6;
+  background-color: #dceba6;
   transition: background 0.25s linear;
 }
 
 .finished.getimg {
-    background-color: #fff9f3;
+  background-color: #fff9f3;
 }
 .finished.getimg:hover {
-  background-color: #AC74CC;
+  background-color: #ac74cc;
   transition: background 0.25s linear;
 }
 
@@ -466,41 +472,41 @@ sub {
 Loading Screen
 **/
 #overlayer {
-  width:100%;
-  height:100%;
-  position:fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   z-index: 2;
-  background:#714939;
+  background: #714939;
 }
 .preloader p {
-    position: absolute;
-    top: 60%;
-    width: 100%;
-    height: 90px;
-    text-align: center;
-    color: #fff;
-    font-size: 24px;
-    z-index: 3;
+  position: absolute;
+  top: 60%;
+  width: 100%;
+  height: 90px;
+  text-align: center;
+  color: #fff;
+  font-size: 24px;
+  z-index: 3;
 }
 .loader {
-    display: inline-block;
-    width: 30px;
-    height: 30px;
-    position: absolute;
-    z-index: 3;
-    border: 4px solid #Fff;
-    top: 50%;
-    animation: loader 2s infinite ease;
-    position: absolute;
-    left: 49%;
-    text-align: center;
-    color: #fff;
-    font-size: 24px;
-    z-index: 3;
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  z-index: 3;
+  border: 4px solid #fff;
+  top: 50%;
+  animation: loader 2s infinite ease;
+  position: absolute;
+  left: 49%;
+  text-align: center;
+  color: #fff;
+  font-size: 24px;
+  z-index: 3;
 }
 .loader-inner {
   vertical-align: top;
@@ -578,7 +584,6 @@ Loading Screen
   }
 }
 
-
 .lang-select {
   margin: 10px;
   text-align: center;
@@ -593,7 +598,7 @@ Loading Screen
 **/
 @media only screen and (min-width: 768px) {
   .sorter.mobile {
-      display: none;
+    display: none;
   }
 }
 @media only screen and (max-width: 767px) {
@@ -656,12 +661,12 @@ Loading Screen
   }
 
   .options {
-      margin: 1em;
-      display: grid;
-      text-align: left;
-      grid-template-columns: repeat(3, 1fr);
-      grid-gap: 10px;
-      width: 85%;
+    margin: 1em;
+    display: grid;
+    text-align: left;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    width: 85%;
   }
 
   .loader {

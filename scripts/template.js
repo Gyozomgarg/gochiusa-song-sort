@@ -21,8 +21,8 @@ dataSet[dataSetVersion].options = [
       { name: "Rin", key: "rin" },
       { name: "Yura", key: "yura" },
       { name: "Saki", key: "saki" },
-      { name: "Takahiro", key: "takahiro" }
-    ]
+      { name: "Takahiro", key: "takahiro" },
+    ],
   },
   {
     name: "Filter by Sub Groups",
@@ -38,9 +38,9 @@ dataSet[dataSetVersion].options = [
       { name: "Spokesmodel Corps", key: "smc" },
       { name: "Happine", key: "happine" },
       { name: "Mistral", key: "mistral" },
-      { name: "Diva", key: "diva" }
-    ]
-  }
+      { name: "Diva", key: "diva" },
+    ],
+  },
 ];
 
-dataSet[dataSetVersion].characterData = {SONGS};
+dataSet[dataSetVersion].characterData = { SONGS };
