@@ -94,9 +94,21 @@ function init() {
   document
     .querySelector(".finished.save.button")
     .addEventListener("click", () => saveProgress("Last Result"));
-  document
-    .querySelector(".finished.share.button")
-    .addEventListener("click", shareResults);
+  if (
+    navigator &&
+    navigator.canShare &&
+    navigator.canShare({
+      title: SHARE_TITLE,
+      text: SHARE_TEXT,
+      url: `${location.protocol}//${sorterURL}`,
+    })
+  ) {
+    document
+      .querySelector(".finished.share.button")
+      .addEventListener("click", shareResults);
+  } else {
+    document.querySelector(".finished.share.button").classList.add("hidden");
+  }
   document
     .querySelector(".finished.getimg.button")
     .addEventListener("click", preGenerateImage);
@@ -105,10 +117,10 @@ function init() {
     .addEventListener("click", generateTextList);
 
   for (const el of document.querySelectorAll(".sort.image")) {
-    el.querySelector('iframe').addEventListener("load", () => {
+    el.querySelector("iframe").addEventListener("load", () => {
       // TODO(Darkpi): For whatever reason chrome still renders a few frames of
       // the old iframe content before the new one is rendered :(
-      el.classList.remove('loading');
+      el.classList.remove("loading");
     });
   }
 
@@ -379,22 +391,25 @@ function display() {
     if (!video.startsWith(YOUTUBE_EMBED_PREFIX)) return null;
     const id = video.substring(YOUTUBE_EMBED_PREFIX.length);
     return `https://img.youtube.com/vi/${id}/hqdefault.jpg`;
-  }
+  };
 
   progressBar(getProgressBarPrompt(battleNo), percent);
 
-  for (const [selector, videoUrl] of [[".left.sort.image", leftChar.img], [".right.sort.image", rightChar.img]] ) {
+  for (const [selector, videoUrl] of [
+    [".left.sort.image", leftChar.img],
+    [".right.sort.image", rightChar.img],
+  ]) {
     const el = document.querySelector(selector);
-    el.classList.add('loading');
-    el.querySelector('iframe').src = videoUrl;
+    el.classList.add("loading");
+    el.querySelector("iframe").src = videoUrl;
 
     const coverImg = getCoverImg(videoUrl);
 
     if (coverImg == null) {
-      el.querySelector('img').classList.add('hidden');
+      el.querySelector("img").classList.add("hidden");
     } else {
-      el.querySelector('img').classList.remove('hidden');
-      el.querySelector('img').src = coverImg;
+      el.querySelector("img").classList.remove("hidden");
+      el.querySelector("img").src = coverImg;
     }
   }
 
