@@ -14,8 +14,6 @@ let optTaken = []; // Records which options are set.
 let timestamp = 0; // savedata[0]      (Unix time when sorter was started, used as initial PRNG seed and in dataset selection)
 let timeTaken = 0; // savedata[1]      (Number of ms elapsed when sorter ends, used as end-of-sort flag and in filename generation)
 let choices = ""; // savedata[2]      (String of '0', '1' and '2' that records what sorter choices are made)
-let optStr = ""; // savedata[3]      (String of '0' and '1' that denotes top-level option selection)
-let suboptStr = ""; // savedata[4...n]  (String of '0' and '1' that denotes nested option selection, separated by '|')
 let timeError = false; // Shifts entire savedata array to the right by 1 and adds an empty element at savedata[0] if true.
 
 /** Intermediate sorter data. */
@@ -233,26 +231,6 @@ function start() {
       }
     } else {
       optTaken.push(document.getElementById(`cb-${opt.key}`).checked);
-    }
-  });
-
-  /** Convert boolean array form to string form. */
-  optStr = "";
-  suboptStr = "";
-
-  optStr = optTaken
-    .map((val) => !!val)
-    .reduce((str, val) => {
-      str += val ? "1" : "0";
-      return str;
-    }, optStr);
-  optTaken.forEach((val) => {
-    if (Array.isArray(val)) {
-      suboptStr += "|";
-      suboptStr += val.reduce((str, val) => {
-        str += val ? "1" : "0";
-        return str;
-      }, "");
     }
   });
 
@@ -705,7 +683,9 @@ function saveProgress(saveType) {
 
   if (saveType !== "Autosave") {
     const saveURL = `${location.protocol}//${sorterURL}?${saveData}`;
-    navigator.clipboard.writeText(saveURL);
+    if (navigator.clipboard != null) {
+      navigator.clipboard.writeText(saveURL);
+    }
 
     window.prompt(
       saveType === "Last Result" ? FINISHED_TEXT : IN_PROGRESS_TEXT,
@@ -794,6 +774,16 @@ function generateTextList() {
 }
 
 function generateSavedata() {
+  /** Convert boolean array form to string form. */
+  const optStr = optTaken.map((val) => val ? "1" : "0").join("")
+  let suboptStr = "";
+
+  for (const val of optTaken) {
+    if (Array.isArray(val)) {
+      suboptStr += `|${val.map((x) => x ? "1" : "0").join("")}`;
+    }
+  }
+
   const saveData = `${
     timeError ? "|" : ""
   }${timestamp}|${timeTaken}|${choices}|${optStr}${suboptStr}`;
