@@ -84,3 +84,6 @@ formatCharacterNames = (characters) => {
 RESET_BUTTON = "リセット";
 SHARE_TITLE = "ごちうさ楽曲ソーター";
 SHARE_TEXT = "私のごちうさ楽曲ランキングをチェックしてください:";
+
+// TODO(Darkpi): This is duplicated across .css file and here.
+NOT_AVAILABLE_IMG = "https://sort.chimame.cafe/src/assets/not-available-jp.jpg"

@@ -334,6 +334,8 @@ label:hover {
 
 .result.image img {
   height: 160px;
+  width: 213.33px;
+  object-fit: contain;
 }
 
 .result.spacer {

@@ -62,3 +62,6 @@ formatCharacterNames = (characters) => {
 RESET_BUTTON = "Reset";
 SHARE_TITLE = "Gochiusa Music Sorter";
 SHARE_TEXT = "Check out my sorted list of Gochiusa songs:";
+
+// TODO(Darkpi): This is duplicated across .css file and here.
+NOT_AVAILABLE_IMG = "https://sort.chimame.cafe/src/assets/not-available.jpg"
