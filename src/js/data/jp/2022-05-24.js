@@ -46,29 +46,29 @@ dataSet[dataSetVersion].options = [
   // TODO Add Covers, Rearrange, and Solos to the dataset
   // },
   {
-    name: "グループ曲で除外する",
+    name: "グループ曲を除外する",
     key: "group-song",
     tooltip:
-      "複数の歌手が参加している楽曲を除外したいは、チェックしてください。",
+      "複数の歌手が参加している楽曲を除外するには、チェックしてください。",
     checked: false,
   },
   {
-    name: "カバー曲で除外する",
+    name: "カバー曲を除外する",
     key: "cover-ver",
-    tooltip: "カバー曲の除外したいは、こちらをチェックしてください。",
+    tooltip: "カバー曲を除外するには、こちらをチェックしてください。",
     checked: true,
   },
   {
-    name: "リアレンジ曲で除外する",
+    name: "リアレンジ曲を除外する",
     key: "rearrange-ver",
-    tooltip: "リアレンジ曲の除外したいは、こちらをチェックしてください。",
+    tooltip: "リアレンジ曲を除外するには、こちらをチェックしてください。",
     checked: true,
   },
   {
-    name: "ソロ曲で除外する",
+    name: "ソロ曲を除外する",
     key: "solo-ver",
     tooltip:
-      "グループ曲のソロバージョンを除外したいは、チェックしてください。",
+      "グループ曲のソロバージョンを除外するには、チェックしてください。",
     checked: true,
   },
 ];
