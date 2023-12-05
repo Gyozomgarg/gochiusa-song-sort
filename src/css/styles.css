@@ -173,6 +173,7 @@ body {
   border: 3px solid #734a3a;
   border-radius: 20px;
   max-width: -webkit-fill-available;
+  max-width: -moz-available;
 }
 
 .sorter > .right {
@@ -180,6 +181,7 @@ body {
   border: 3px solid #734a3a;
   border-radius: 20px;
   max-width: -webkit-fill-available;
+  max-width: -moz-available;
 }
 
 .sort.image {
@@ -429,6 +431,7 @@ sub {
 
 .home-img {
   max-width: -webkit-fill-available;
+  max-width: -moz-available;
   border-radius: 300px;
   user-select: none;
 }
